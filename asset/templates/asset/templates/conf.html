@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Renault</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+       
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!--Morris Chart CSS -->
+        <link rel="stylesheet" href="{% static  'assets/plugins/morris/morris.css">
+
+        <!-- App css -->
+        <link href="{% static  'assets/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/icons.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/style.css'%}" rel="stylesheet" type="text/css" />
+
+        <script src="{% static 'assets/js/modernizr.min.js'%}"></script>
+
+        <script type="text/javascript">
+
+        
+
+        </script>
+
+        <style>
+
+        
+
+        </style>
+
+    </head>
+
+    <body>
+
+            <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container-fluid">
+
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <!-- Text Logo -->
+                        <!--<a href="index.html" class="logo">-->
+                            <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                            <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
+                        <!--</a>-->
+                        <!-- Image Logo -->
+                        <a href="/" class="logo">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="35" class="logo-small">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="50" class="logo-large">
+                        </a>
+                    </div>
+                    <!-- End Logo container-->
+
+                    <div class="menu-extras topbar-custom">
+
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                            <li class="menu-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle nav-link">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>                             
+
+                        </ul>
+                    </div>
+                    <!-- end menu-extras -->
+
+                    <div class="clearfix"></div>
+
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar-main -->
+
+            
+        </header>
+
+
+        <div class="wrapper">
+            <div class="container-fluid">
+
+              <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <h1>Cadastrar Ponto</h1>
+                        <div class="card-box widget-user">
+                            <div class="form-group row">
+                                
+                                <form action="" method="POST">
+                                    {% csrf_token %}                                    
+                                    <div class="form-group">
+                                        <label for="name">Ponto de medição</label>
+                                        <input type="text" class="form-control" name="name" placeholder="Digite o nome do ponto">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-6 col-form-label">Imagem do ponto</label>
+                                        <div class="col-10">
+                                            <input type="file" class="form-control" name="imagem">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Local de destino excel</label>
+                                        <input type="text" class="form-control" name="celula" placeholder="Digite a célula">
+                                    </div>
+                                    <br>                                
+                                      <input type="hidden" name="ORIGIN" value="partner"/>
+                                    
+                                    <button type="submit" class="btn btn-primary">Cadastrar</button>    
+                                   
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                      <h1>Pontos cadastrados</h1>
+                      <div class="card-box">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ponto</th>
+                                <th>Célula</th>                               
+                            </tr>
+                            </thead>
+                            {% for el in local%}
+                            <tbody>
+                            <tr>
+                                <th scope="row">{{el}}</th>
+                                <td>{{el.Point}}</td>
+                                <td>{{el.Cell}}</td>                                 
+                            </tr>                           
+                            </tbody>
+                            {% endfor %}
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+              
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js'%}"></script>
+        <script src="{% static 'assets/js/popper.min.js'%}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'assets/js/waves.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js'%}"></script>
+
+        <!-- KNOB JS -->
+        <!--[if IE]>
+        <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
+        <![endif]-->
+        <script src="{% static 'assets/plugins/jquery-knob/jquery.knob.js'%}"></script>
+
+        <!--Morris Chart-->
+        <script src="{% static 'assets/plugins/morris/morris.min.js'%}"></script>
+        <script src="{% static 'assets/plugins/raphael/raphael-min.js'%}"></script>
+
+        <!-- Dashboard init -->
+        <script src="{% static 'assets/pages/jquery.dashboard.js'%}"></script>
+
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/jquery.core.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.app.js'%}"></script>
+
+    </body>
+</html>

@@ -1,0 +1,222 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Renault-COVID</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="refresh" content="5 url="">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!--Morris Chart CSS -->
+        <link rel="stylesheet" href="{% static  'assets/plugins/morris/morris.css">
+
+        <!-- App css -->
+        <link href="{% static  'assets/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/icons.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/style.css'%}" rel="stylesheet" type="text/css" />
+
+        <script src="{% static 'assets/js/modernizr.min.js'%}"></script>
+
+        <script type="text/javascript">
+
+        var video = document.querySelector("#videoElement");
+
+        if (navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+              video.srcObject = stream;
+            })
+            .catch(function (err0r) {
+              console.log("Something went wrong!");
+            });
+        }
+
+        </script>
+
+        <style>
+
+        .testx {
+          font-size: 42px;
+          color: #ffce33 !important;
+          font-family: 'Rancho', cursive;
+        }
+
+        .item{
+          width:308px;
+        }
+
+        #videoElement {
+            width: 460px;
+            height: 345px;
+            background-color: #666;
+        }
+
+
+
+
+        .progress {
+              background: rgba(255,255,255,0.1);
+              justify-content: flex-start;
+              border-radius: 100px;
+              align-items: center;
+              position: relative;
+              padding: 0 5px;
+              display: flex;
+              height: 40px;
+              width: 1000px;
+            }
+
+            .progress-value {
+              animation: load 10s  forwards;
+              box-shadow: 0 10px 40px -10px #fff;
+              border-radius: 100px;
+              background: #f9c851;
+              height: 30px;
+              width: 0;
+            }
+
+            @keyframes load {
+              0% { width: 0; }
+              100% { width: 100%; }
+            }
+
+            .er-fluid {
+                height: 385px !important;
+            }
+
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container-fluid">
+
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <a href="index.html" class="logo">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="100" class="logo-small">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="70" class="logo-large">
+                        </a>
+                        <a href="index.html" class="testx"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RENAULT NA LUTA CONTRA O COVID</span></a>
+
+                    <!-- End Logo container-->
+
+
+                    
+
+                    <div class="clearfix"></div>
+
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar-main -->
+
+            
+        </header>
+        <!-- End Navigation Bar-->
+
+
+        <div class="wrapper">
+            <div class="container-fluid">
+
+                <div class="row ">
+                    
+                    <div class="col-sm-6 ">
+                      <div class="card-box er-fluid" align="center"><!--
+                        <div class="bg-picture card-box">
+                           <img class="card-img-top img-fluid" src="{% static 'assets/images/camera_flir.png'%}" alt="Card image cap"> 
+                        </div>-->
+
+                        <div id="container">
+                            <video autoplay="true" id="videoElement">
+                            
+                            </video>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="card-box er-fluid" align="center">                                
+                                    <input data-plugin="knob" data-width="280" data-height="280" data-min="0"
+                                           
+                                           {% if temperature <= 38 %}
+
+                                           data-fgColor="#f9c851"
+
+                                           {% endif %}
+
+                                           {% if temperature > 38 %}
+
+                                           data-fgColor="#EF0B0B"
+
+                                           {% endif %}
+
+
+                                           data-bgColor="#435966" data-displayPrevious=true value={{temperature}}/>
+                                    <h2 class="font-600 text-muted">Temperatura (°C)</h2>
+                        </div>
+                        
+                  </div>
+
+                </div>
+
+               
+                <div class="row">
+                    <div class="col-sm-12">
+                            <div class="card m-b-20 text-white bg-success text-xs-center">
+                                <div class="card-body">
+                                    <blockquote class="card-bodyquote">
+                                      <h2 align="center">Sua entrada está autorizada no setor da fábrica</h2>
+                                    </blockquote>
+                                </div>
+                            </div>       
+                    </div>
+                </div>
+               
+
+                
+
+
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js'%}"></script>
+        <script src="{% static 'assets/js/popper.min.js'%}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'assets/js/waves.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js'%}"></script>
+
+        <!-- KNOB JS -->
+        <!--[if IE]>
+        <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
+        <![endif]-->
+        <script src="{% static 'assets/plugins/jquery-knob/jquery.knob.js'%}"></script>
+
+        <!--Morris Chart-->
+        <script src="{% static 'assets/plugins/morris/morris.min.js'%}"></script>
+        <script src="{% static 'assets/plugins/raphael/raphael-min.js'%}"></script>
+
+        <!-- Dashboard init -->
+        <script src="{% static 'assets/pages/jquery.dashboard.js'%}"></script>
+
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/jquery.core.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.app.js'%}"></script>
+
+    </body>
+</html>

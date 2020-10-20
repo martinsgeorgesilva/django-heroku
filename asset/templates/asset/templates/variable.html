@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load custom_tags %}
+{% block css %}
+{% endblock %}
+{% block nav %} {% endblock %}
+{% block T2 %} {% endblock %}
+{% block script %}
+
+<script src="{% static 'myJs/callAjax.js' %}"></script>
+<script src="{% static 'myJs/realTimeChart.js' %}"></script>
+<script type="text/javascript">
+   $(document).ready( function () { RecuperaDados('hora') });
+</script>
+{% endblock %}
+{% block valores %}
+<input type="hidden" id="myVarID" name="variable" value="{{variableID}}">
+<div class="row">
+   <div class="col-xl-12 col-md-12">
+      <div class="row">
+         <div class="col-xl-3 col-md-4">
+            <div class="card-box card-cust _widget-user">
+               <div class="box-chart-fixed">
+                  <div class="text-center">
+                     <h5>* Tempo Real *</h5>
+                     <h1 class="text-info" data-plugin="counterup" id="valor_real"></h1>
+                     <h4 id="EngUnit3"></h4>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xl-2 col-md-4">
+            <div class="card-box card-cust _widget-user">
+               <div class="text-center">
+                  <h5>Mínimo</h5>
+                  <h1 class="text-info" data-plugin="counterup" id="valor_minimo"></h1>
+                  <h4 id="EngUnit"></h4>
+               </div>
+            </div>
+         </div>
+         <div class="col-xl-2 col-md-4">
+            <div class="card-box card-cust _widget-user">
+               <div class="text-center">
+                  <h5>Médio</h5>
+                  <h1 class="text-info" data-plugin="counterup" id="valor_medio"></h1>
+                  <h4 id="EngUnit1"></h4>
+               </div>
+            </div>
+         </div>
+         <div class="col-xl-2 col-md-4">
+            <div class="card-box card-cust _widget-user">
+               <div class="text-center">
+                  <h5>Máximo</h5>
+                  <h1 class="text-info" data-plugin="counterup" id="valor_maximo"></h1>
+                  <h4 id="EngUnit2"></h4>
+               </div>
+            </div>
+         </div>
+         <div class="col-xl-3 col-md-4">
+            <div class="card-box card-cust _widget-user" style="text-align: center;">
+               <div class="widget-chart-1" >
+                  <canvas id="myChart"></canvas>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}{% block buttons %}
+<ul class="pagination pagination-split">
+   <li class="page-item"><button class="ajaxFun page-link" onclick="RecuperaDados('hora');" >Hora</button></li>
+   <li class="page-item"><button class="ajaxFun page-link" onclick="RecuperaDados('Hoje');" >Hoje</button></li>
+   <li class="page-item"><button class="ajaxFun page-link"  onclick="RecuperaDados('Semana');">Semana</button></li>
+   <li class="page-item"><button class="ajaxFun page-link"  onclick="RecuperaDados('Mes');">Mês</button></li>
+   <li class="page-item"><button class="ajaxFun page-link"  onclick="RecuperaDados('Ano');">Ano</button></li>
+</ul>
+{% endblock %}
+{% block content %}
+<div id="chartContainer">Data Render</div>
+{% endblock %}
+
+  {% block alertas %}
+
+                          
+                          <div class="row">
+
+                            <div class="col-md-9">
+                              <h4 class="header-title mt-0 m-b-30">Alertas Sobre Pressão do Filtro</h4>
+                              <div class="table-responsive">
+
+                                <table class="table mb-0">
+
+                                                                      <thead>
+
+                                                                      <tr>
+
+                                                                          <th>#</th>
+
+                                                                          <th>Alertas</th>
+
+                                                                          <th>Data Início</th>
+
+                                                                          <th>Valor</th>
+
+                                                                          <th>Status</th>
+
+                                                                          <th>Responsável</th>
+
+                                                                      </tr>
+
+                                                                      </thead>
+
+             <tbody>
+
+       {% for el in variableID|alarmes %}
+
+            <tr>
+
+ <td>{{forloop.counter}}</td>
+ <td>{{el.text}}</td>
+ <td>{{el.start_in}}</td>
+ <td>{{el.value}}</td>
+ <td><span class="badge badge-success">Reconhecido</span></td>
+  <td>João</td>
+</tr>
+    {% endfor %}
+
+
+
+                                                                      </tbody>
+
+                                                                  </table>
+
+                              </div>
+                            </div>
+                            <div class="col-md-3 pl-4">
+                              <h4 class="header-title mt-0 m-b-30">Responsáveis</h4>
+
+                                <div class="checkbox checkbox-info checkbox-circle">
+                                    <input id="checkbox8" type="checkbox">
+                                    <label for="checkbox8">
+                                        Outros
+                                    </label>
+                                </div>
+
+                                <div class="checkbox checkbox-success checkbox-circle">
+                                    <input id="checkbox-10" type="checkbox" checked>
+                                    <label for="checkbox-10">
+                                        Reconhecido
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-warning checkbox-circle">
+                                    <input id="checkbox-11" type="checkbox" checked>
+                                    <label for="checkbox-11">
+                                        Aviso
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-danger checkbox-circle">
+                                    <input id="checkbox-12" type="checkbox" checked>
+                                    <label for="checkbox-12">
+                                        Crítico
+                                    </label>
+                                </div>
+
+
+
+
+
+
+
+
+                            </div>
+                          </div>
+  {% endblock %}

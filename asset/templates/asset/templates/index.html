@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Renault-TCM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="refresh" content="3 url="">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!--Morris Chart CSS -->
+        <link rel="stylesheet" href="{% static  'assets/plugins/morris/morris.css">
+
+        <!-- App css -->
+        <link href="{% static  'assets/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/icons.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/style.css'%}" rel="stylesheet" type="text/css" />
+
+        <script src="{% static 'assets/js/modernizr.min.js'%}"></script>
+
+        <script type="text/javascript">
+
+        
+
+        </script>
+
+        <style>
+
+        
+
+        </style>
+
+    </head>
+
+    <body>
+
+            <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container-fluid">
+
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <!-- Text Logo -->
+                        <!--<a href="index.html" class="logo">-->
+                            <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                            <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
+                        <!--</a>-->
+                        <!-- Image Logo -->
+                        <a href="index.html" class="logo">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="35" class="logo-small">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="50" class="logo-large">
+                        </a>
+                    </div>
+                    <!-- End Logo container-->
+
+                    <div class="menu-extras topbar-custom">
+
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                            <li class="menu-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle nav-link">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>                             
+
+                        </ul>
+                    </div>
+                    <!-- end menu-extras -->
+
+                    <div class="clearfix"></div>
+
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar-main -->
+
+            
+        </header>
+
+
+
+        <div class="wrapper">
+            <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-12">
+                        
+                        <h4 class="page-title">Área de Medições</h4>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                        
+                            <div class="card m-b-20">
+                                {% if cliente.value_measure > 5 %}
+
+                                <img class="card-img-top img-fluid" src="{% static 'assets/images/renault-kwid.jpg'%}" alt="Card image cap">
+                                {% else %}
+                                <img class="card-img-top img-fluid" src="{% static 'assets/images/renault-captur.jpg'%}" alt="Card image cap">
+
+                                {% endif %}
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">AX123</h4>
+                                    <p class="card-text">Neste ponto verificar a medida xxxxx aaaaa bbbbb</p>
+                                    <div class="text-center">
+                                        <h1 class="display-2 text-warning" data-plugin="counterup">{{cliente.value_measure}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        
+
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="card-box">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ponto</th>
+                                <th>Valor medido</th>                                    
+                            </tr>
+                            </thead>
+                            {% for el in local%}
+                            <tbody>
+                            <tr>
+                                <th scope="row">{{el.id}}</th>
+                                <td>{{el.Point}}</td>
+                                <td>{{el.value_measure</td>                                   
+                            </tr>                           
+                            </tbody>
+                            {% endfor %}
+                        </table>
+
+
+                        <form action="" method="POST">
+                           {% csrf_token %}
+                            <input type="hidden" name="ORIGIN" value="save_data"/>
+                            
+                            <div class="button">
+                                <button type="submit">Salvar dados</button>
+                            </div>
+                        </form>
+
+
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          
+              
+             
+                   
+
+
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js'%}"></script>
+        <script src="{% static 'assets/js/popper.min.js'%}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'assets/js/waves.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js'%}"></script>
+
+        <!-- KNOB JS -->
+        <!--[if IE]>
+        <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
+        <![endif]-->
+        <script src="{% static 'assets/plugins/jquery-knob/jquery.knob.js'%}"></script>
+
+        <!--Morris Chart-->
+        <script src="{% static 'assets/plugins/morris/morris.min.js'%}"></script>
+        <script src="{% static 'assets/plugins/raphael/raphael-min.js'%}"></script>
+
+        <!-- Dashboard init -->
+        <script src="{% static 'assets/pages/jquery.dashboard.js'%}"></script>
+
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/jquery.core.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.app.js'%}"></script>
+
+    </body>
+</html>
