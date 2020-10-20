@@ -25,95 +25,16 @@ import pandas as pd
 #  pgadmin email: martins.georgesilva@gmail.com senha: 1234qwer
 
 
+
 @login_required(login_url="login/")
 def index(request):
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     local = Points.objects.all()
-    print(local)
-    ficha = Measure()
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        while True:
-            print("Speak Anything :")
-            if request.method == 'POST' and request.POST.get('ORIGIN') == 'save_data': 
-               print('AAARRRRPPPPPPPP¨¨¨¨¨¨¨¨¨¨666666666666666666677777778888888888888888888888888')
-
-               context = {}
-               return render(request, 'asset/templates/index.html', context)
-            audio = r.listen(source)
-
-                
-            try:
-                text = r.recognize_google(audio)
-            except:
-                text = 99
-                print(text)
-            try:
-                if text == 'next':
-                    #workbook = xlsxwriter.Workbook('file.xlsx')
-                    #worksheet = workbook.add_worksheet()
-                   
-                    #worksheet.write(3, 0, text)
-                    #workbook.close()
-                    measure = 77
-                #####AQUI COLOCAR OS COMANDOS#################
-                else:
-                    measure = float(text)
-            except:
-                measure = 666
-            if measure:
-                ficha.value_measure = measure
-                ficha.save()
-                print("You said : {}".format(text))
-                print('rrrrrrrrrrrr')
-                print(ficha.value_measure)
-                print('tttttttttttt')
-                table_measure = Measure.objects.all()
-                print(table_measure)
-                cliente = Measure.objects.last()
-                print(cliente.value_measure)
-                print('aaaaaaaaaaaaaabbbbb')
-
-                #gravação do dado na planilha do excel. Pip install xlsxwriter
-                workbook = xlsxwriter.Workbook('file.xlsx')
-                worksheet = workbook.add_worksheet()
-                worksheet.write(2, 3, cliente.value_measure)
-                worksheet.write(3, 0, 'gustavo')
-                workbook.close()
-
-                context = {"measure": measure, "ficha": ficha, "cliente": cliente, "local": local }
-                return render(request, 'asset/templates/index.html', context)
-            else:
-                print('yyyyyyyyyyyyyyyyyyyyyyyy')
-            context = { "text": text, "local": local}
-            return render(request, 'asset/templates/index.html', context)
-
-
-'''
-            try:
-                text = r.recognize_google(audio)
-                measure = float(text)
-                ficha.value_measure = measure
-                ficha.save()
-                print("You said : {}".format(text))
-                if measure:
-                    print('rrrrrrrrrrrr')
-                    print(ficha.value_measure)
-                    print('tttttttttttt')
-                    cliente = Measure.objects.last()
-                    print(cliente.value_measure)
-                    print('aaaaaaaaaaaaaabbbbb')
-                    context = {"measure": measure, "ficha": ficha, "cliente": cliente}
-                    return render(request, 'asset/templates/index.html', context)
-
-            except:
-                print("Sorry could not recognize what you said")
-'''
+    context = {"local": local}
+    return render(request, 'asset/templates/index.html', context)
 
 
 @login_required(login_url="login/")
 def index_1(request):
-    print('aaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhaaaaaaaaaa')
     ficha = Measure()
     #cliente = Measure.objects.last()
     #print(cliente.value_measure)
@@ -123,7 +44,6 @@ def index_1(request):
 
 @login_required(login_url="login/")
 def option(request):
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     ficha = Measure()
     context = {}
     return render(request, 'asset/templates/option.html', context)
@@ -132,7 +52,6 @@ def option(request):
 
 @login_required(login_url="login/")
 def conf(request):
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     local = Points.objects.all()
     #local.delete()    
     if request.method == 'POST' and request.POST.get('ORIGIN') == 'partner':
@@ -142,13 +61,78 @@ def conf(request):
         new.Cell = request.POST.get('celula')
         new.save()
         a = Points.objects.last()
-        print (a.Point)
-        print(a.imagem)
-        print(a.Cell)
-        print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
         return redirect('conf')
     context = {"local": local}
     return render(request, 'asset/templates/conf.html', context)
+
+
+
+
+import csv
+import pandas as pd
+@login_required(login_url="login/")
+def import_csv(request):
+    context = {}
+    if request.method == 'POST' and request.POST.get('ORIG') == 'csv':
+        print('lendo...')
+        try:
+            P = csvfile()
+            P.file = request.FILES.get('files')
+            print(P.file)
+            print(request.FILES.get('files'))
+            P.save()
+            print('passa aqui porra!tytut')
+        except:
+            context.update({'Erro_import':True})
+        print(P.file)
+        with open(str(P.file), "r") as readfile:
+            reader1 = csv.reader(readfile)
+            read = []
+            for row in reader1:
+                if len(row) != 0:
+                    read = read + row
+            readfile.close()
+            for el in read:
+                #print(el)
+                aux = el.split(';')
+                try:
+                    S = Points()
+                    #continue
+                except:
+                	print('deu ruim essa parada')
+                   
+                print(aux)
+
+                S.Point = aux[0]
+                S.coment = aux[1]
+                S.Cell = aux[2]
+                S.save()
+                print('salvo S')
+        context.update({'list':read})
+    return render(request, 'asset/templates/import_csv.html', context)
+
+
+
+import os
+from django.conf import settings
+from django.http import HttpResponse, Http404
+from django_pandas.io import read_frame
+@login_required(login_url="login/")
+def export_csv(request):
+    context = {}
+    u = Points.objects.all()
+    df = read_frame(u)
+    print(df)
+    df.to_csv('exported_csv/'+str(datetime.strptime(timezone.localtime().strftime('%Y-%m-%d'), "%Y-%m-%d").date())+'.csv', sep='\t', encoding='utf-8')
+
+    response = HttpResponse(open('exported_csv/'+str(datetime.strptime(timezone.localtime().strftime('%Y-%m-%d'), "%Y-%m-%d").date())+'.csv', 'rb').read())
+    response['Content-Type'] = 'text/plain'
+    response['Content-Disposition'] = 'attachment; filename=exported_csv_users.csv'
+    return response
+
+
+
+
 
 
 '''
@@ -290,3 +274,95 @@ def mensal(request):
     return render(request, 'asset/templates/mensal.html', context)
 
 '''
+
+
+'''
+@login_required(login_url="login/")
+def index(request):
+    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    local = Points.objects.all()
+    print(local)
+    ficha = Measure()
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        while True:
+            print("Speak Anything :")
+            if request.method == 'POST' and request.POST.get('ORIGIN') == 'save_data': 
+               print('AAARRRRPPPPPPPP¨¨¨¨¨¨¨¨¨¨666666666666666666677777778888888888888888888888888')
+
+               context = {}
+               return render(request, 'asset/templates/index.html', context)
+            audio = r.listen(source)
+
+                
+            try:
+                text = r.recognize_google(audio)
+            except:
+                text = 99
+                print(text)
+            try:
+                if text == 'next':
+                    #workbook = xlsxwriter.Workbook('file.xlsx')
+                    #worksheet = workbook.add_worksheet()
+                   
+                    #worksheet.write(3, 0, text)
+                    #workbook.close()
+                    measure = 77
+                #####AQUI COLOCAR OS COMANDOS#################
+                else:
+                    measure = float(text)
+            except:
+                measure = 666
+            if measure:
+                ficha.value_measure = measure
+                ficha.save()
+                print("You said : {}".format(text))
+                print('rrrrrrrrrrrr')
+                print(ficha.value_measure)
+                print('tttttttttttt')
+                table_measure = Measure.objects.all()
+                print(table_measure)
+                cliente = Measure.objects.last()
+                print(cliente.value_measure)
+                print('aaaaaaaaaaaaaabbbbb')
+
+                #gravação do dado na planilha do excel. Pip install xlsxwriter
+                workbook = xlsxwriter.Workbook('file.xlsx')
+                worksheet = workbook.add_worksheet()
+                worksheet.write(2, 3, cliente.value_measure)
+                worksheet.write(3, 0, 'gustavo')
+                workbook.close()
+
+                context = {"measure": measure, "ficha": ficha, "cliente": cliente, "local": local }
+                return render(request, 'asset/templates/index.html', context)
+            else:
+                print('yyyyyyyyyyyyyyyyyyyyyyyy')
+            context = { "text": text, "local": local}
+            return render(request, 'asset/templates/index.html', context)
+'''
+
+
+
+
+
+'''
+            try:
+                text = r.recognize_google(audio)
+                measure = float(text)
+                ficha.value_measure = measure
+                ficha.save()
+                print("You said : {}".format(text))
+                if measure:
+                    print('rrrrrrrrrrrr')
+                    print(ficha.value_measure)
+                    print('tttttttttttt')
+                    cliente = Measure.objects.last()
+                    print(cliente.value_measure)
+                    print('aaaaaaaaaaaaaabbbbb')
+                    context = {"measure": measure, "ficha": ficha, "cliente": cliente}
+                    return render(request, 'asset/templates/index.html', context)
+
+            except:
+                print("Sorry could not recognize what you said")
+'''
+

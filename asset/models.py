@@ -10,11 +10,19 @@ class Measure(models.Model):
 
 class Points(models.Model):
     Point  = models.CharField(max_length=100, null=True)
+    coment = models.CharField(max_length=1000, null=True)
     imagem = models.FileField(upload_to='documents/', null=True)
     Cell = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return '{}'.format(self.id)
+
+
+class csvfile(models.Model):
+	file = models.FileField(upload_to='documents/csv/')
+	def __str__(self):
+		return '{}'.format(self.file)
+
 
 #class VariableTypeLib(models.Model):
 #	VariableTypeID = models.BigIntegerField(null=True)

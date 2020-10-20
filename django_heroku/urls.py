@@ -25,6 +25,8 @@ urlpatterns = [
     #path(r'VarialbleMonitored/', VarialbleMonitored, name='VarialbleMonitored'),
     path(r'', option, name='option'),
     path(r'conf', conf, name='conf'),
+    path(r'import_csv', import_csv, name='import_csv'),
+    path(r'export_csv/', export_csv, name='export_csv'),
 
 
     #url(r'^configurate/', include('conf.urls'), name='configurate'),

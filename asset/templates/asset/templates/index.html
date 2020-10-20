@@ -8,7 +8,7 @@
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta http-equiv="refresh" content="3 url="">
+<!--    <meta http-equiv="refresh" content="5 url="">   -->
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -24,6 +24,40 @@
         <script src="{% static 'assets/js/modernizr.min.js'%}"></script>
 
         <script type="text/javascript">
+
+
+            /* JS comes here */
+        function runSpeechRecognition() {
+            // get output div reference
+            var output = document.getElementById("output");
+            // get action element reference
+            var action = document.getElementById("action");
+                // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+            
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                    action.innerHTML = "<small>Escutando, pode falar...</small>";
+                };
+                
+                recognition.onspeechend = function() {
+                    action.innerHTML = "<small>Parei de lhe escutar...</small>";
+                    recognition.stop();
+                }
+              
+                // This runs when the speech recognition service returns result
+                recognition.onresult = function(event) {
+                    var transcript = event.results[0][0].transcript;
+                    var confidence = event.results[0][0].confidence;
+                    //output.innerHTML = "<b>Medida:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
+                    output.innerHTML = "<b>Medida:</b> " + transcript;
+                    output.classList.remove("hide");
+                };
+              
+                 // start recognition
+                 recognition.start();
+          }
 
         
 
@@ -102,8 +136,28 @@
 
                   <div class="row">
                     <div class="col-sm-12">
+                        <div class="card m-b-20">
+                    
+                        <img class="card-img-top img-fluid" src="{% static 'assets/images/renault-captur.jpg'%}" alt="Card image cap">
 
-                        
+                        <div class="card-body">
+                            <h3 class="card-title text-center">AX123</h3>
+                            <p class="card-text"></p>
+                            <div class="text-center">
+                                <h1 class="display-3 text-warning" data-plugin="counterup"><div id="output" class="hide"></div></h1>
+                            </div>
+
+
+                            <p>Aperte no botão e fale a medida...</p>
+        <p><button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="button" onclick="runSpeechRecognition()">Aperte para falar</button> &nbsp; <h1><span id="action"></span></h1></p>
+        <div id="output" class="hide"></div>
+
+
+
+                        </div>
+                    </div>
+
+                        <!--
                             <div class="card m-b-20">
                                 {% if cliente.value_measure > 5 %}
 
@@ -120,7 +174,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
+                        -->
 
                     </div>
                   </div>
@@ -134,7 +188,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Ponto</th>
-                                <th>Valor medido</th>                                    
+                                <th>Comentário</th>
+                                <th>Célula</th>
+                                <th>Medição</th>                                    
                             </tr>
                             </thead>
                             {% for el in local%}
@@ -142,7 +198,9 @@
                             <tr>
                                 <th scope="row">{{el.id}}</th>
                                 <td>{{el.Point}}</td>
-                                <td>{{el.value_measure</td>                                   
+                                <td>{{el.coment}}</td>
+                                <td>{{el.Cell}}</td>
+                                <td>3.5</td>                                   
                             </tr>                           
                             </tbody>
                             {% endfor %}
@@ -154,9 +212,14 @@
                             <input type="hidden" name="ORIGIN" value="save_data"/>
                             
                             <div class="button">
-                                <button type="submit">Salvar dados</button>
+                                <button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Salvar dados</button>
                             </div>
                         </form>
+
+       Exportar <a href="/media/{{exported_csv_users}}"> CSV </a>
+       <a href="/export_csv"><p class="btn small blue" >Exportar CSV</p></a>
+    <div class="x_title"><h2>Usuários Com Perfil<small></small></h2></div>
+
 
 
                       </div>

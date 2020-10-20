@@ -92,6 +92,16 @@
         <div class="wrapper">
             <div class="container-fluid">
 
+
+              <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <h1>Importar CSV</h1>
+                        <div class="card-box widget-user">
+                            <a href="/import_csv" class="btn btn-primary">Importar csv</a>
+                        </div>
+                    </div>
+                </div>
+
               <div class="row">
                     <div class="col-xl-12 col-md-12">
                         <h1>Cadastrar Ponto</h1>
@@ -114,11 +124,10 @@
                                         <label for="name">Local de destino excel</label>
                                         <input type="text" class="form-control" name="celula" placeholder="Digite a célula">
                                     </div>
-                                    <br>                                
+                                                                  
                                       <input type="hidden" name="ORIGIN" value="partner"/>
                                     
-                                    <button type="submit" class="btn btn-primary">Cadastrar</button>    
-                                   
+                                    <button type="submit" class="btn btn-primary">Cadastrar</button>  &nbsp;&nbsp;&nbsp;&nbsp;  
                                     
                                 </form>
                             </div>
@@ -135,6 +144,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Ponto</th>
+                                <th>Comentário</th>
                                 <th>Célula</th>                               
                             </tr>
                             </thead>
@@ -143,6 +153,7 @@
                             <tr>
                                 <th scope="row">{{el}}</th>
                                 <td>{{el.Point}}</td>
+                                <td>{{el.coment}}</td>
                                 <td>{{el.Cell}}</td>                                 
                             </tr>                           
                             </tbody>
