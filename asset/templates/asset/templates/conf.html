@@ -104,7 +104,7 @@
 
               <div class="row">
                     <div class="col-xl-12 col-md-12">
-                        <h1>Cadastrar Ponto</h1>
+                        <h1>Criar Novo Projeto</h1>
                         <div class="card-box widget-user">
                             <div class="form-group row">
                                 
@@ -152,9 +152,20 @@
                             <tbody>
                             <tr>
                                 <th scope="row">{{el}}</th>
-                                <td>{{el.Point}}</td>
+                                <td>{{el.label_point}}</td>
                                 <td>{{el.coment}}</td>
-                                <td>{{el.Cell}}</td>                                 
+
+
+                                {% if el.value_measure == None %}
+
+                                 <td>Aguardando</td>
+
+                                {% else %}
+
+                                    <td>{{el.value_measure}}</td>
+
+                                {% endif %}
+                                
                             </tr>                           
                             </tbody>
                             {% endfor %}

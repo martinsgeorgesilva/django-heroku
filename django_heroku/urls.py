@@ -17,8 +17,7 @@ urlpatterns = [
     path(r'login/', auth_views.LoginView.as_view(template_name='asset/templates/login.html'), name='login'),
     path(r'logout/', auth_views.LogoutView.as_view(template_name='asset/templates/login.html'), name='logout'),
 
-    path(r'index', index, name='index'),
-    path(r'index_1', index_1, name='index_1'),
+    path(r'index/<int:id>', index, name='index'),
     #path(r'Ajax/', Ajax, name='Ajax'),
     #path(r'lastValueRealTimeChart/', lastValueRealTimeChart, name='lastValueRealTimeChart'),
     #path(r'mensal', mensal, name='mensal'),
@@ -27,8 +26,9 @@ urlpatterns = [
     path(r'conf', conf, name='conf'),
     path(r'import_csv', import_csv, name='import_csv'),
     path(r'export_csv/', export_csv, name='export_csv'),
-
-
+    path(r'project/', project, name='project'),
+    path(r'section/<int:id>', section, name='section'),
+    
     #url(r'^configurate/', include('conf.urls'), name='configurate'),
     #url(r'^dashboard/', include('asset.urls'), name='dashboard'),
 

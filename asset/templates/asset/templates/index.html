@@ -51,7 +51,7 @@
                     var transcript = event.results[0][0].transcript;
                     var confidence = event.results[0][0].confidence;
                     //output.innerHTML = "<b>Medida:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
-                    output.innerHTML = "<b>Medida:</b> " + transcript;
+                    output.innerHTML ='<form action="" method="POST">{% csrf_token %}<div class="form-group"><label for="name">' + transcript + '</label><input class="form-control" type="hidden" name="celula" value="' + transcript + '"></div><input type="hidden" name="ORIGIN" value="partner"/><div class="button"><button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Salvar dados</button></div></form>';
                     output.classList.remove("hide");
                 };
               
@@ -62,6 +62,8 @@
         
 
         </script>
+
+
 
         <style>
 
@@ -129,7 +131,7 @@
                   <div class="row">
                     <div class="col-sm-12">
                         
-                        <h4 class="page-title">Área de Medições</h4>
+                        <h4 class="page-title">Projeto: {{measure.projectlabel}} - Setor: {{measure.sectionlabel}}</h4>
                     </div>
                   </div>
 
@@ -138,17 +140,15 @@
                     <div class="col-sm-12">
                         <div class="card m-b-20">
                     
-                        <img class="card-img-top img-fluid" src="{% static 'assets/images/renault-captur.jpg'%}" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{% static 'assets/images/'%}{{measure.id}}.JPG" alt="Card image cap">
 
                         <div class="card-body">
-                            <h3 class="card-title text-center">AX123</h3>
+                            <h3 class="card-title text-center">Ponto {{measure.id}}: {{measure.label_point}}</h3>
                             <p class="card-text"></p>
                             <div class="text-center">
                                 <h1 class="display-3 text-warning" data-plugin="counterup"><div id="output" class="hide"></div></h1>
                             </div>
 
-
-                            <p>Aperte no botão e fale a medida...</p>
         <p><button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="button" onclick="runSpeechRecognition()">Aperte para falar</button> &nbsp; <h1><span id="action"></span></h1></p>
         <div id="output" class="hide"></div>
 
@@ -193,14 +193,22 @@
                                 <th>Medição</th>                                    
                             </tr>
                             </thead>
-                            {% for el in local%}
+                            {% for el in tabela%}
                             <tbody>
                             <tr>
                                 <th scope="row">{{el.id}}</th>
-                                <td>{{el.Point}}</td>
+                                <td>{{el.label_point}}</td>
                                 <td>{{el.coment}}</td>
-                                <td>{{el.Cell}}</td>
-                                <td>3.5</td>                                   
+                                <td>{{el.cell}}</td>
+                                {% if el.value_measure == None %}
+
+                                 <td>Aguardando</td>
+
+                                {% else %}
+
+                                    <td>{{el.value_measure}}</td>
+
+                                {% endif %}                                  
                             </tr>                           
                             </tbody>
                             {% endfor %}

@@ -92,24 +92,20 @@
 
         <div class="wrapper">
             <div class="container-fluid">
-              <h1>Gestão 1DTCM</h1>
+              <h1 align="center">Projeto: {{projeto.label_project}}</h1>
 
               <div class="row">
+
+                {% for el in sec %}
                     <div class="col-sm-6">
                         <div class="card m-b-20 card-body">
-                            <h3 class="card-title">Configurações</h3>
-                            <p class="card-text">No início do projeto será necessário cadastrar os pontos.</p>
-                            <a href="/conf" class="btn btn-primary">AMBIENTE DE CONFIGURAÇÕES</a>
+                            <h2 class="card-title">SEÇÃO: {{el.label_section}}</h2>
+                            <a href="/index/{{el.id}}" class="btn btn-primary">ACESSAR SEÇÃO</a>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="card m-b-20 card-body">
-                            <h3 class="card-title">Medições</h3>
-                            <p class="card-text">Durante a convergência é feito a entrada dos dados por voz.</p>
-                            <a href="/project" class="btn btn-primary">AMBIENTE DE PROJETOS</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+
+              </div>
               
             </div> <!-- end container -->
         </div>

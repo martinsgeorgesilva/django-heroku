@@ -1,1 +1,265 @@
-pandas....
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Renault-TCM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--    <meta http-equiv="refresh" content="5 url="">   -->
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!--Morris Chart CSS -->
+        <link rel="stylesheet" href="{% static  'assets/plugins/morris/morris.css">
+
+        <!-- App css -->
+        <link href="{% static  'assets/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/icons.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/style.css'%}" rel="stylesheet" type="text/css" />
+
+        <script src="{% static 'assets/js/modernizr.min.js'%}"></script>
+
+        <script type="text/javascript">
+
+
+            /* JS comes here */
+        function runSpeechRecognition() {
+            // get output div reference
+            var output = document.getElementById("output");
+            // get action element reference
+            var action = document.getElementById("action");
+                // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+            
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                    action.innerHTML = "<small>Escutando, pode falar...</small>";
+                };
+                
+                recognition.onspeechend = function() {
+                    action.innerHTML = "<small>Parei de lhe escutar...</small>";
+                    recognition.stop();
+                }
+              
+                // This runs when the speech recognition service returns result
+                recognition.onresult = function(event) {
+                    var transcript = event.results[0][0].transcript;
+                    var confidence = event.results[0][0].confidence;
+                    //output.innerHTML = "<b>Medida:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
+                    output.innerHTML ='<form action="" method="POST">{% csrf_token %}<div class="form-group"><label for="name">' + transcript + '</label><input type="hidden" class="form-control" name="celula" value="' + transcript + '"></div><input type="hidden" name="ORIGIN" value="partner"/><div class="button"><button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Salvar dados</button></div></form>';
+                    output.classList.remove("hide");
+                };
+              
+                 // start recognition
+                 recognition.start();
+          }
+
+        
+
+        </script>
+
+
+
+        <style>
+
+        
+
+        </style>
+
+    </head>
+
+    <body>
+
+            <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container-fluid">
+
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <!-- Text Logo -->
+                        <!--<a href="index.html" class="logo">-->
+                            <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                            <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
+                        <!--</a>-->
+                        <!-- Image Logo -->
+                        <a href="/" class="logo">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="35" class="logo-small">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="50" class="logo-large">
+                        </a>
+                    </div>
+                    <!-- End Logo container-->
+
+                    <div class="menu-extras topbar-custom">
+
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                            <li class="menu-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle nav-link">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>                             
+
+                        </ul>
+                    </div>
+                    <!-- end menu-extras -->
+
+                    <div class="clearfix"></div>
+
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar-main -->
+
+            
+        </header>
+
+
+
+        <div class="wrapper">
+            <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-12">
+                        
+                        <h4 class="page-title">Área de Medições</h4>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card m-b-20">
+                        <img class="card-img-top img-fluid" src="{% static 'assets/images/camera_flir.png'%}" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{% static 'assets/images/'%}{{el.id}}.jpg" alt="Card image cap">
+
+                        <div class="card-body">
+                            <h3 class="card-title text-center">AX123</h3>
+                            <p class="card-text"></p>
+                            <div class="text-center">
+                                <h1 class="display-3 text-warning" data-plugin="counterup"><div id="output" class="hide"></div></h1>
+                            </div>
+
+
+                            <p>Aperte no botão e fale a medida...</p>
+        <p><button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="button" onclick="runSpeechRecognition()">Aperte para falar</button> &nbsp; <h1><span id="action"></span></h1></p>
+        <div id="output" class="hide"></div>
+
+
+
+                        </div>
+                    </div>
+
+                        <!--
+                            <div class="card m-b-20">
+                                {% if cliente.value_measure > 5 %}
+
+                                <img class="card-img-top img-fluid" src="{% static 'assets/images/renault-kwid.jpg'%}" alt="Card image cap">
+                                {% else %}
+                                <img class="card-img-top img-fluid" src="{% static 'assets/images/renault-captur.jpg'%}" alt="Card image cap">
+
+                                {% endif %}
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">AX123</h4>
+                                    <p class="card-text">Neste ponto verificar a medida xxxxx aaaaa bbbbb</p>
+                                    <div class="text-center">
+                                        <h1 class="display-2 text-warning" data-plugin="counterup">{{cliente.value_measure}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        -->
+
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="card-box">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ponto</th>
+                                <th>Comentário</th>
+                                <th>Célula</th>
+                                <th>Medição</th>                                    
+                            </tr>
+                            </thead>
+                            {% for el in local%}
+                            <tbody>
+                            <tr>
+                                <th scope="row">{{el.id}}</th>
+                                <td>{{el.Point}}</td>
+                                <td>{{el.coment}}</td>
+                                <td>{{el.Cell}}</td>
+                                <td>3.5</td>                                   
+                            </tr>                           
+                            </tbody>
+                            {% endfor %}
+                        </table>
+
+
+                        <form action="" method="POST">
+                           {% csrf_token %}
+                            <input type="hidden" name="ORIGIN" value="save_data"/>
+                            
+                            <div class="button">
+                                <button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Salvar dados</button>
+                            </div>
+                        </form>
+
+       Exportar <a href="/media/{{exported_csv_users}}"> CSV </a>
+       <a href="/export_csv"><p class="btn small blue" >Exportar CSV</p></a>
+
+
+
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          
+              
+             
+                   
+
+
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js'%}"></script>
+        <script src="{% static 'assets/js/popper.min.js'%}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'assets/js/waves.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js'%}"></script>
+
+        <!-- KNOB JS -->
+        <!--[if IE]>
+        <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
+        <![endif]-->
+        <script src="{% static 'assets/plugins/jquery-knob/jquery.knob.js'%}"></script>
+
+        <!--Morris Chart-->
+        <script src="{% static 'assets/plugins/morris/morris.min.js'%}"></script>
+        <script src="{% static 'assets/plugins/raphael/raphael-min.js'%}"></script>
+
+        <!-- Dashboard init -->
+        <script src="{% static 'assets/pages/jquery.dashboard.js'%}"></script>
+
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/jquery.core.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.app.js'%}"></script>
+
+    </body>
+</html>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from asset.models import *
@@ -24,24 +24,6 @@ import pandas as pd
 
 #  pgadmin email: martins.georgesilva@gmail.com senha: 1234qwer
 
-
-
-@login_required(login_url="login/")
-def index(request):
-    local = Points.objects.all()
-    context = {"local": local}
-    return render(request, 'asset/templates/index.html', context)
-
-
-@login_required(login_url="login/")
-def index_1(request):
-    ficha = Measure()
-    #cliente = Measure.objects.last()
-    #print(cliente.value_measure)
-    context = {}
-    return render(request, 'asset/templates/index_1.html', context)
-
-
 @login_required(login_url="login/")
 def option(request):
     ficha = Measure()
@@ -49,10 +31,10 @@ def option(request):
     return render(request, 'asset/templates/option.html', context)
 
 
-
 @login_required(login_url="login/")
 def conf(request):
     local = Points.objects.all()
+    print (local)
     #local.delete()    
     if request.method == 'POST' and request.POST.get('ORIGIN') == 'partner':
         new = Points()
@@ -64,6 +46,52 @@ def conf(request):
         return redirect('conf')
     context = {"local": local}
     return render(request, 'asset/templates/conf.html', context)
+
+
+@login_required(login_url="login/")
+def project(request):
+	arr = ProjectVehicle.objects.all()
+	print (arr)
+	context = {"arr": arr}
+	return render(request, 'asset/templates/project.html', context)
+
+
+@login_required(login_url="login/")
+def section(request, id):
+    projeto = ProjectVehicle.objects.get(id = id)
+    print(projeto.label_project)
+    sec = SectionVehicle.objects.filter(projectlabel = projeto.label_project)
+    print(sec)
+    context = {"sec":sec,"id":id}
+    return render(request, 'asset/templates/section.html', context)
+
+
+@login_required(login_url="login/")
+def index(request, id):
+    sec = SectionVehicle.objects.get(id = id)
+    tabela = Points.objects.filter(sectionlabel = sec.label_section)
+
+
+    try:
+        local = Points.objects.filter(Q(sectionlabel = sec.label_section) & Q(value_measure = None))
+        if local != None:
+            measure = local[0]
+        else:
+            print("criar método após o final dos pontos retirar todos os pontos para reiniciar")
+
+        if request.method == 'POST' and request.POST.get('ORIGIN') == 'partner':
+            print(measure)
+            measure.value_measure = request.POST.get('celula')
+            print(measure.value_measure)
+            measure.save()
+            #a = Points.objects.last()
+            return redirect('index', id)
+    except:
+        print('XXXXXXXXXXXXXXXXXXX')
+        measure = tabela.last()
+        
+
+    return render(request, 'asset/templates/index.html', {'local':local, 'tabela':tabela, 'measure':measure,})
 
 
 
@@ -78,10 +106,8 @@ def import_csv(request):
         try:
             P = csvfile()
             P.file = request.FILES.get('files')
-            print(P.file)
-            print(request.FILES.get('files'))
             P.save()
-            print('passa aqui porra!tytut')
+            print('passa aqui porra!')
         except:
             context.update({'Erro_import':True})
         print(P.file)
@@ -96,17 +122,35 @@ def import_csv(request):
                 #print(el)
                 aux = el.split(';')
                 try:
-                    S = Points()
+                    proj = ProjectVehicle()
+                    sect = SectionVehicle()
+                    point = Points()
                     #continue
+                    print('deu boa essa parada')
                 except:
                 	print('deu ruim essa parada')
                    
-                print(aux)
+                if ProjectVehicle.objects.filter(label_project = aux[0]):
+                    print('iiii')
+                else:
+                    proj.label_project = aux[0]
+                    proj.save()
 
-                S.Point = aux[0]
-                S.coment = aux[1]
-                S.Cell = aux[2]
-                S.save()
+                if SectionVehicle.objects.filter(label_section = aux[1]):
+                    print('222')
+                else:
+                    sect.label_section = aux[1]
+                    sect.projectlabel = aux[0]
+                    sect.save()
+
+                point.label_point = aux[2]
+                point.number_point = aux[3]
+                point.coment = aux[4]
+                point.imagem = aux[5]
+                point.cell = aux[6]
+                point.sectionlabel = aux[1]
+                point.projectlabel = aux[0]
+                point.save()
                 print('salvo S')
         context.update({'list':read})
     return render(request, 'asset/templates/import_csv.html', context)
@@ -130,6 +174,23 @@ def export_csv(request):
     response['Content-Disposition'] = 'attachment; filename=exported_csv_users.csv'
     return response
 
+
+
+
+
+import base64
+
+def decodif(value): 
+    b = base64.b64decode(value.encode('utf-8')).decode("utf-8", "ignore")
+    c = base64.b64decode(b).decode("utf-8", "ignore")
+    d = base64.b64decode(c).decode("utf-8", "ignore")
+    return d
+
+def encoder(value): 
+    a = base64.b64encode(bytes(value, "utf-8"))
+    b = base64.b64encode(bytes(a.decode('utf-8'), "utf-8"))
+    c = base64.b64encode(bytes(b.decode('utf-8'), "utf-8"))
+    return c.decode('utf-8')
 
 
 
