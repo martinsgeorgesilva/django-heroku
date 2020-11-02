@@ -130,11 +130,11 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL=('/')
 
-#STATIC_ROOT = BASE_DIR /'static'
+STATIC_ROOT = BASE_DIR /'static'
 
 STATIC_URL = '/static/'
 
-
+'''
 import os
 
 STATICFILES_DIRS = ( 
@@ -144,4 +144,4 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
+'''
