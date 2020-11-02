@@ -140,10 +140,10 @@
                     <div class="col-sm-12">
                         <div class="card m-b-20">
                     
-                        <img class="card-img-top img-fluid" src="{% static 'assets/images/'%}{{measure.id}}.JPG" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{% static 'assets/images/'%}{{measure.number_point|floatformat:"0"}}.JPG" alt="Card image cap">
 
                         <div class="card-body">
-                            <h3 class="card-title text-center">Ponto {{measure.id}}: {{measure.label_point}}</h3>
+                            <h3 class="card-title text-center">Ponto {{measure.number_point|floatformat:"0"}}: {{measure.label_point}}</h3>
                             <p class="card-text"></p>
                             <div class="text-center">
                                 <h1 class="display-3 text-warning" data-plugin="counterup"><div id="output" class="hide"></div></h1>
@@ -196,7 +196,7 @@
                             {% for el in tabela%}
                             <tbody>
                             <tr>
-                                <th scope="row">{{el.id}}</th>
+                                <th scope="row">{{ el.number_point|floatformat:"0" }}</th>
                                 <td>{{el.label_point}}</td>
                                 <td>{{el.coment}}</td>
                                 <td>{{el.cell}}</td>
@@ -214,18 +214,27 @@
                             {% endfor %}
                         </table>
 
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <a href="/export_csv/"><button  class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light">Exportar CSV</button></a>
+                    </div>
+                </div>
 
-                        <form action="" method="POST">
-                           {% csrf_token %}
-                            <input type="hidden" name="ORIGIN" value="save_data"/>
-                            
-                            <div class="button">
-                                <button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Salvar dados</button>
-                            </div>
-                        </form>
+                <br><br>
 
-       Exportar <a href="/media/{{exported_csv_users}}"> CSV </a>
-       <a href="/export_csv"><p class="btn small blue" >Exportar CSV</p></a>
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+
+                                <form action="" method="POST">
+                                    {% csrf_token %}                                    
+                                                                  
+                                    <input type="hidden" name="ORIGIN" value="delet"/>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light">Limpar dados de medição</button> 
+                                    
+                                </form>
+                    </div>
+                </div>
 
 
 
@@ -237,11 +246,6 @@
 
           
               
-             
-                   
-
-
-
         <!-- jQuery  -->
         <script src="{% static 'assets/js/jquery.min.js'%}"></script>
         <script src="{% static 'assets/js/popper.min.js'%}"></script>

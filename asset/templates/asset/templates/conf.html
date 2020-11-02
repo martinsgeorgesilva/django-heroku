@@ -104,33 +104,13 @@
 
               <div class="row">
                     <div class="col-xl-12 col-md-12">
-                        <h1>Criar Novo Projeto</h1>
+                        <h1>Excluir Pontos</h1>
                         <div class="card-box widget-user">
-                            <div class="form-group row">
-                                
                                 <form action="" method="POST">
-                                    {% csrf_token %}                                    
-                                    <div class="form-group">
-                                        <label for="name">Ponto de medição</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Digite o nome do ponto">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-6 col-form-label">Imagem do ponto</label>
-                                        <div class="col-10">
-                                            <input type="file" class="form-control" name="imagem">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="name">Local de destino excel</label>
-                                        <input type="text" class="form-control" name="celula" placeholder="Digite a célula">
-                                    </div>
-                                                                  
-                                      <input type="hidden" name="ORIGIN" value="partner"/>
-                                    
-                                    <button type="submit" class="btn btn-primary">Cadastrar</button>  &nbsp;&nbsp;&nbsp;&nbsp;  
-                                    
+                                    {% csrf_token %}                                                              
+                                      <input type="hidden" name="ORIGIN" value="partner"/> 
+                                    <button type="submit" class="btn btn-primary">Excluir</button>  &nbsp;&nbsp;&nbsp;&nbsp;   
                                 </form>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,7 +131,7 @@
                             {% for el in local%}
                             <tbody>
                             <tr>
-                                <th scope="row">{{el}}</th>
+                                <th scope="row">{{ el.number_point|floatformat:"0" }}</th>
                                 <td>{{el.label_point}}</td>
                                 <td>{{el.coment}}</td>
 

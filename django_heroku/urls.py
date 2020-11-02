@@ -28,6 +28,7 @@ urlpatterns = [
     path(r'export_csv/', export_csv, name='export_csv'),
     path(r'project/', project, name='project'),
     path(r'section/<int:id>', section, name='section'),
+    path(r'delete_measure', delete_measure, name='delete_measure'),
     
     #url(r'^configurate/', include('conf.urls'), name='configurate'),
     #url(r'^dashboard/', include('asset.urls'), name='dashboard'),

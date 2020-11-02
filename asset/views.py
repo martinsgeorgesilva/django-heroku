@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import permission_required
 from asset.models import *
 from django.db.models import Max
 import numpy as np
-from datetime import datetime, date, timedelta
+from datetime import datetime, date, timedelta, time
 import itertools
 import operator
 from django.db.models import *
@@ -21,7 +21,6 @@ import json
 import pandas as pd
 #import xlsxwriter
 
-
 #  pgadmin email: martins.georgesilva@gmail.com senha: 1234qwer
 
 @login_required(login_url="login/")
@@ -33,18 +32,21 @@ def option(request):
 
 @login_required(login_url="login/")
 def conf(request):
-    local = Points.objects.all()
-    print (local)
-    #local.delete()    
+    local = Points.objects.all() 
+    projeto = ProjectVehicle.objects.all()
+    sec = SectionVehicle.objects.all()
     if request.method == 'POST' and request.POST.get('ORIGIN') == 'partner':
-        new = Points()
-        new.Point = request.POST.get('name')
-        new.imagem = request.POST.get('imagem')
-        new.Cell = request.POST.get('celula')
-        new.save()
-        a = Points.objects.last()
+        for el in local:
+            el.delete()
+            print("deletado")
+        for el in projeto:
+            el.delete()
+            print("deletado1")
+        for el in sec:
+            el.delete()
+            print("deletado2")
         return redirect('conf')
-    context = {"local": local}
+    context = {"local": local, "projeto":projeto, "sec":sec,}
     return render(request, 'asset/templates/conf.html', context)
 
 
@@ -59,9 +61,7 @@ def project(request):
 @login_required(login_url="login/")
 def section(request, id):
     projeto = ProjectVehicle.objects.get(id = id)
-    print(projeto.label_project)
     sec = SectionVehicle.objects.filter(projectlabel = projeto.label_project)
-    print(sec)
     context = {"sec":sec,"id":id}
     return render(request, 'asset/templates/section.html', context)
 
@@ -70,8 +70,11 @@ def section(request, id):
 def index(request, id):
     sec = SectionVehicle.objects.get(id = id)
     tabela = Points.objects.filter(sectionlabel = sec.label_section)
-
-
+    if request.method == 'POST' and request.POST.get('ORIGIN') == 'delet':
+        for el in tabela:
+            el.value_measure = None
+            el.save()
+        return redirect('index',id)
     try:
         local = Points.objects.filter(Q(sectionlabel = sec.label_section) & Q(value_measure = None))
         if local != None:
@@ -91,7 +94,7 @@ def index(request, id):
         measure = tabela.last()
         
 
-    return render(request, 'asset/templates/index.html', {'local':local, 'tabela':tabela, 'measure':measure,})
+    return render(request, 'asset/templates/index.html', {'local':local, 'tabela':tabela, 'measure':measure, 'id':id,})
 
 
 
@@ -144,7 +147,7 @@ def import_csv(request):
                     sect.save()
 
                 point.label_point = aux[2]
-                point.number_point = aux[3]
+                point.number_point = int(aux[3])
                 point.coment = aux[4]
                 point.imagem = aux[5]
                 point.cell = aux[6]
@@ -156,24 +159,114 @@ def import_csv(request):
     return render(request, 'asset/templates/import_csv.html', context)
 
 
-
 import os
 from django.conf import settings
 from django.http import HttpResponse, Http404
 from django_pandas.io import read_frame
 @login_required(login_url="login/")
 def export_csv(request):
-    context = {}
     u = Points.objects.all()
-    df = read_frame(u)
-    print(df)
-    df.to_csv('exported_csv/'+str(datetime.strptime(timezone.localtime().strftime('%Y-%m-%d'), "%Y-%m-%d").date())+'.csv', sep='\t', encoding='utf-8')
+    celly = []
+    medida_arr = []  
+    for el in u:
+        celula = el.cell
+        celula = celula.replace('J','')
+        z = int(celula)
+        celly.append(z)
+        medida_arr.append(el.value_measure)
+    count = 1
+    arry = []
+    while count <= z:
+        arry.append(count)
+        count+=1
+    aux = []
+    for b in range(len(arry)):
+        aux.append("")
 
-    response = HttpResponse(open('exported_csv/'+str(datetime.strptime(timezone.localtime().strftime('%Y-%m-%d'), "%Y-%m-%d").date())+'.csv', 'rb').read())
+    for i in range(len(celly)):
+        for j in range(len(arry)):
+            if celly[i] == arry[j]:                
+                aux[j] = medida_arr[i]      
+            j+=1
+        i+=1
+
+    df = pd.DataFrame({'Measure': aux}) 
+    #df = read_frame(u, fieldnames=['value_measure'])
+    print(df)
+    df.to_csv('exported_csv/'+'.csv', sep='\t', encoding='utf-8', header=False, index=False)
+
+    response = HttpResponse(open('exported_csv/'+'.csv', 'rb').read())
     response['Content-Type'] = 'text/plain'
     response['Content-Disposition'] = 'attachment; filename=exported_csv_users.csv'
     return response
 
+def delete_measure(request, id):
+    try:
+        measure = Points.objects.all()
+        print(measure)
+        #pessoa.delete()
+    except Exception as e:
+        raise e
+    return redirect('section')
+
+
+
+
+'''
+    print(u)
+    last_cell = Points.objects.last()
+    print(last_cell.cell)
+
+    celly = []  
+    for el in u:
+        celula = el.cell
+        celula = celula.replace('J','')
+        z = int(celula)
+        celly.append(z)
+    count = 1
+    arry = []
+    while count <= z:
+        arry.append(count)
+        count+=1
+    aux = []
+
+    for b in range(len(arry)):
+        aux.append("")
+    print (aux)
+
+    for i in range(len(celly)):
+        for j in range(len(arry)):
+            if celly[i] == arry[j]:
+                print (j)
+                y = Points.objects.filter(id = 1)
+                #aux[j] = y.value_measure
+                print(y)
+      
+            j+=1
+        i+=1
+
+    print(aux)
+
+
+
+
+
+def pandas_excel(request):
+    df1 = pd.DataFrame({'Measure': [11, '', 13, 14, '','',45]})  
+    writer = pd.ExcelWriter('pandas_positioning.xlsx', engine ='xlsxwriter') 
+    df1.to_excel(writer, sheet_name ='Sheet1')   
+    writer.save()
+
+'''
+
+
+
+
+def delete_file(request): 
+    #id = request.GET.get('param1', None)
+    #F_del = files.objects.get(id=int(id))
+    #F_del.delete()
+    return redirect('conf')
 
 
 
