@@ -32,19 +32,16 @@ def option(request):
 
 @login_required(login_url="login/")
 def conf(request):
-    local = Points.objects.all() 
+    local = Points.objects.all().order_by('number_point') 
     projeto = ProjectVehicle.objects.all()
     sec = SectionVehicle.objects.all()
     if request.method == 'POST' and request.POST.get('ORIGIN') == 'partner':
         for el in local:
             el.delete()
-            print("deletado")
         for el in projeto:
             el.delete()
-            print("deletado1")
         for el in sec:
             el.delete()
-            print("deletado2")
         return redirect('conf')
     context = {"local": local, "projeto":projeto, "sec":sec,}
     return render(request, 'asset/templates/conf.html', context)
@@ -53,7 +50,6 @@ def conf(request):
 @login_required(login_url="login/")
 def project(request):
 	arr = ProjectVehicle.objects.all()
-	print (arr)
 	context = {"arr": arr}
 	return render(request, 'asset/templates/project.html', context)
 
@@ -69,7 +65,7 @@ def section(request, id):
 @login_required(login_url="login/")
 def index(request, id):
     sec = SectionVehicle.objects.get(id = id)
-    tabela = Points.objects.filter(sectionlabel = sec.label_section)
+    tabela = Points.objects.filter(sectionlabel = sec.label_section).order_by('number_point')
     #APAGA DADOS DE MEDIÇÃO DE TODA A SEÇÃO DO VEÍCULO
     if request.method == 'POST' and request.POST.get('ORIGIN') == 'delet':
         for el in tabela:
@@ -78,26 +74,22 @@ def index(request, id):
         return redirect('index',id)
 
     if request.method == 'POST' and request.POST.get('ORIGIN') == 'point':
-        print('Obrigado senhor!!!!!!!!!!!!!!!!!!!!!!')
         this_point = request.POST.get('PONTO')
         measure = Points.objects.get(id = this_point)
         measure.value_measure = None
         measure.save()
-        print(measure.value_measure)
         return render(request, 'asset/templates/index.html', {'tabela':tabela, 'measure':measure, 'id':id,})
 
     try:
-        local = Points.objects.filter(Q(sectionlabel = sec.label_section) & Q(value_measure = None))
+        local = Points.objects.filter(Q(sectionlabel = sec.label_section) & Q(value_measure = None)).order_by('number_point')
         if local != None:
             measure = local[0]
         if request.method == 'POST' and request.POST.get('ORIGIN') == 'partner':
             measure = Points.objects.get(id = request.POST.get('THIS'))
             measure.value_measure = request.POST.get('celula')
-            print(measure.value_measure)
             measure.save()
             return redirect('index', id)
     except:
-        print('XXXXXXXXXXXXXXXXXXX')
         realized = True
         measure = tabela.last()
         return render(request, 'asset/templates/index.html', {'tabela':tabela, 'id':id, 'realized':realized, 'measure':measure,})
@@ -117,7 +109,6 @@ def import_csv(request):
             P = csvfile()
             P.file = request.FILES.get('files')
             P.save()
-            print('passa aqui porra!')
         except:
             context.update({'Erro_import':True})
         print(P.file)
@@ -136,7 +127,6 @@ def import_csv(request):
                     sect = SectionVehicle()
                     point = Points()
                     #continue
-                    print('deu boa essa parada')
                 except:
                 	print('deu ruim essa parada')
                    
