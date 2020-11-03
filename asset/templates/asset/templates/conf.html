@@ -93,38 +93,29 @@
             <div class="container-fluid">
 
 
-              <div class="row">
-                    <div class="col-xl-12 col-md-12">
-                        <h1>Importar CSV</h1>
-                        <div class="card-box widget-user">
-                            <a href="/import_csv" class="btn btn-primary">Importar csv</a>
-                        </div>
-                    </div>
-                </div>
-
-              <div class="row">
-                    <div class="col-xl-12 col-md-12">
-                        <h1>Excluir Pontos</h1>
-                        <div class="card-box widget-user">
-                                <form action="" method="POST">
-                                    {% csrf_token %}                                                              
-                                      <input type="hidden" name="ORIGIN" value="partner"/> 
-                                    <button type="submit" class="btn btn-primary">Excluir</button>  &nbsp;&nbsp;&nbsp;&nbsp;   
-                                </form>
-                        </div>
-                    </div>
-                </div>
+              
 
                 <div class="row">
                     <div class="col-sm-12">
                       <h1>Pontos cadastrados</h1>
+
+                      {% if not local %}
+
+                      <div class="card-box">
+
+                        <h4>Ainda não há pontos Cadastrados</h4>
+
+                      </div>
+
+                      {% else %}
+
                       <div class="card-box">
                         <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Ponto</th>
-                                <th>Comentário</th>
+                                <th>Projeto</th>
                                 <th>Célula</th>                               
                             </tr>
                             </thead>
@@ -133,7 +124,7 @@
                             <tr>
                                 <th scope="row">{{ el.number_point|floatformat:"0" }}</th>
                                 <td>{{el.label_point}}</td>
-                                <td>{{el.coment}}</td>
+                                <td>{{el.projectlabel}}</td>
 
 
                                 {% if el.value_measure == None %}
@@ -151,8 +142,33 @@
                             {% endfor %}
                         </table>
                       </div>
+
+                      {% endif %}
                     </div>
                   </div>
+
+
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <h1>Importar CSV</h1>
+                        <div class="card-box widget-user">
+                            <a href="/import_csv" class="btn btn-block btn-lg btn-primary">Importar csv</a>
+                        </div>
+                    </div>
+                </div>
+
+              <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <h1>Excluir Pontos</h1>
+                        <div class="card-box widget-user">
+                                <form action="" method="POST">
+                                    {% csrf_token %}                                                              
+                                      <input type="hidden" name="ORIGIN" value="partner"/> 
+                                    <button type="submit" class="btn btn-block btn-lg btn-primary">Excluir</button>  &nbsp;&nbsp;&nbsp;&nbsp;   
+                                </form>
+                        </div>
+                    </div>
+              </div>
               
             </div> <!-- end container -->
         </div>

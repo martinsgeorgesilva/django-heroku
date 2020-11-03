@@ -51,7 +51,7 @@
                     var transcript = event.results[0][0].transcript;
                     var confidence = event.results[0][0].confidence;
                     //output.innerHTML = "<b>Medida:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
-                    output.innerHTML ='<form action="" method="POST">{% csrf_token %}<div class="form-group"><label for="name">' + transcript + '</label><input class="form-control" type="hidden" name="celula" value="' + transcript + '"></div><input type="hidden" name="ORIGIN" value="partner"/><div class="button"><button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Salvar dados</button></div></form>';
+                    output.innerHTML ='<form action="" method="POST">{% csrf_token %}<label for="name">' + transcript + '</label><input class="form-control" type="hidden" name="celula" value="' + transcript + '"><input class="form-control" type="hidden" name="THIS" value="{{measure.id}}"><input type="hidden" name="ORIGIN" value="partner"/><button class="btn btn-primary btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Salvar dados</button></form>';
                     output.classList.remove("hide");
                 };
               
@@ -92,8 +92,11 @@
                             <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="35" class="logo-small">
                             <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="50" class="logo-large">
                         </a>
+                        
+
                     </div>
                     <!-- End Logo container-->
+
 
                     <div class="menu-extras topbar-custom">
 
@@ -112,6 +115,8 @@
                             </li>                             
 
                         </ul>
+
+
                     </div>
                     <!-- end menu-extras -->
 
@@ -121,6 +126,8 @@
             </div>
             <!-- end topbar-main -->
 
+
+
             
         </header>
 
@@ -128,13 +135,30 @@
 
         <div class="wrapper">
             <div class="container-fluid">
+                
                   <div class="row">
-                    <div class="col-sm-12">
-                        
+                    <div class="col-sm-12">                        
                         <h4 class="page-title">Projeto: {{measure.projectlabel}} - Setor: {{measure.sectionlabel}}</h4>
                     </div>
                   </div>
+                
 
+                  {% if realized%}
+    
+                  <div class="card text-center">
+                      <div class="card-header">
+                        <h3>Medições Finalizadas<h3>
+                      </div>
+                      <div class="card-body">
+                        <h3 class="card-title">Todos os pontos desta seção do projeto foram medidos.</h3>
+                        <p class="card-text">Exporte os dados de medição e para realizar as medições novamente, limpe os dados.</p>
+                
+                      </div>
+                  </div>
+                  <br>
+
+
+                  {% else %}
 
                   <div class="row">
                     <div class="col-sm-12">
@@ -142,7 +166,7 @@
                     
                         <img class="card-img-top img-fluid" src="{% static 'assets/images/'%}{{measure.number_point|floatformat:"0"}}.JPG" alt="Card image cap">
 
-                        <div class="card-body">
+                          <div class="card-body">
                             <h3 class="card-title text-center">Ponto {{measure.number_point|floatformat:"0"}}: {{measure.label_point}}</h3>
                             <p class="card-text"></p>
                             <div class="text-center">
@@ -154,30 +178,11 @@
 
 
 
+                          </div>
                         </div>
                     </div>
-
-                        <!--
-                            <div class="card m-b-20">
-                                {% if cliente.value_measure > 5 %}
-
-                                <img class="card-img-top img-fluid" src="{% static 'assets/images/renault-kwid.jpg'%}" alt="Card image cap">
-                                {% else %}
-                                <img class="card-img-top img-fluid" src="{% static 'assets/images/renault-captur.jpg'%}" alt="Card image cap">
-
-                                {% endif %}
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">AX123</h4>
-                                    <p class="card-text">Neste ponto verificar a medida xxxxx aaaaa bbbbb</p>
-                                    <div class="text-center">
-                                        <h1 class="display-2 text-warning" data-plugin="counterup">{{cliente.value_measure}}</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        -->
-
-                    </div>
                   </div>
+                  {% endif %}
 
 
                   <div class="row">
@@ -186,9 +191,8 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>#</th>
+                                <th >#</th>
                                 <th>Ponto</th>
-                                <th>Comentário</th>
                                 <th>Célula</th>
                                 <th>Medição</th>                                    
                             </tr>
@@ -197,22 +201,27 @@
                             <tbody>
                             <tr>
                                 <th scope="row">{{ el.number_point|floatformat:"0" }}</th>
-                                <td>{{el.label_point}}</td>
-                                <td>{{el.coment}}</td>
+                                <td>
+                                    <form action="" method="POST">
+                                      {% csrf_token %}                                                              
+                                      <input type="hidden" name="ORIGIN" value="point"/> 
+                                      <button type="submit" name="PONTO" value="{{el.id}}" class="btn btn-primary btn-block">{{el.label_point}}</button>   
+                                    </form>
+                                </td>
                                 <td>{{el.cell}}</td>
+
                                 {% if el.value_measure == None %}
-
                                  <td>Aguardando</td>
-
                                 {% else %}
-
-                                    <td>{{el.value_measure}}</td>
-
+                                 <td>{{el.value_measure}}</td>
                                 {% endif %}                                  
                             </tr>                           
                             </tbody>
                             {% endfor %}
                         </table>
+
+
+                        <br>
 
                 <div class="row">
                     <div class="col-xl-12 col-md-12">

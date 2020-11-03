@@ -70,30 +70,37 @@ def section(request, id):
 def index(request, id):
     sec = SectionVehicle.objects.get(id = id)
     tabela = Points.objects.filter(sectionlabel = sec.label_section)
+    #APAGA DADOS DE MEDIÇÃO DE TODA A SEÇÃO DO VEÍCULO
     if request.method == 'POST' and request.POST.get('ORIGIN') == 'delet':
         for el in tabela:
             el.value_measure = None
             el.save()
         return redirect('index',id)
+
+    if request.method == 'POST' and request.POST.get('ORIGIN') == 'point':
+        print('Obrigado senhor!!!!!!!!!!!!!!!!!!!!!!')
+        this_point = request.POST.get('PONTO')
+        measure = Points.objects.get(id = this_point)
+        measure.value_measure = None
+        measure.save()
+        print(measure.value_measure)
+        return render(request, 'asset/templates/index.html', {'tabela':tabela, 'measure':measure, 'id':id,})
+
     try:
         local = Points.objects.filter(Q(sectionlabel = sec.label_section) & Q(value_measure = None))
         if local != None:
             measure = local[0]
-        else:
-            print("criar método após o final dos pontos retirar todos os pontos para reiniciar")
-
         if request.method == 'POST' and request.POST.get('ORIGIN') == 'partner':
-            print(measure)
+            measure = Points.objects.get(id = request.POST.get('THIS'))
             measure.value_measure = request.POST.get('celula')
             print(measure.value_measure)
             measure.save()
-            #a = Points.objects.last()
             return redirect('index', id)
     except:
         print('XXXXXXXXXXXXXXXXXXX')
+        realized = True
         measure = tabela.last()
-        
-
+        return render(request, 'asset/templates/index.html', {'tabela':tabela, 'id':id, 'realized':realized, 'measure':measure,})
     return render(request, 'asset/templates/index.html', {'local':local, 'tabela':tabela, 'measure':measure, 'id':id,})
 
 
@@ -167,9 +174,11 @@ from django_pandas.io import read_frame
 def export_csv(request):
     u = Points.objects.all()
     celly = []
-    medida_arr = []  
+    medida_arr = [] 
+    print(medida_arr) 
     for el in u:
         celula = el.cell
+        print(celula)
         celula = celula.replace('J','')
         z = int(celula)
         celly.append(z)
