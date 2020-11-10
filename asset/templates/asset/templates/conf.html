@@ -91,6 +91,7 @@
 
         <div class="wrapper">
             <div class="container-fluid">
+                <H4><a href="/">HOME </a>
 
 
               
@@ -162,11 +163,11 @@
                     <div class="col-xl-12 col-md-12">
                         <h1>Excluir Pontos</h1>
                         <div class="card-box widget-user">
-                                <form action="" method="POST">
-                                    {% csrf_token %}                                                              
-                                      <input type="hidden" name="ORIGIN" value="partner"/> 
-                                    <button type="submit" class="btn btn-block btn-lg btn-primary">Excluir</button>  &nbsp;&nbsp;&nbsp;&nbsp;   
-                                </form>
+
+                            <button type="button" class="btn btn-danger btn-lg btn-bordred btn-block waves-effect waves-light" data-toggle="modal" data-target="#exampleModalCenter">
+                              Excluir todos os pontos
+                            </button>
+                                
                         </div>
                     </div>
               </div>
@@ -174,6 +175,32 @@
             </div> <!-- end container -->
         </div>
         <!-- end wrapper -->
+
+
+        <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Excluir todos os pontos do sistema</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h3>Você está prestes a excluir todos os pontos do sistema. Deseja realmente excluir?</h3>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar exclusão</button>
+                    <form action="" method="POST">
+                        {% csrf_token %}                                                              
+                          <input type="hidden" name="ORIGIN" value="partner"/> 
+                        <button type="submit" class="btn btn-danger btn-custom btn-bordred btn-block waves-effect waves-light">Excluir</button>  
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
         <!-- jQuery  -->

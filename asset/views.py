@@ -58,7 +58,7 @@ def project(request):
 def section(request, id):
     projeto = ProjectVehicle.objects.get(id = id)
     sec = SectionVehicle.objects.filter(projectlabel = projeto.label_project)
-    context = {"sec":sec,"id":id}
+    context = {"sec":sec,"id":id, "projeto":projeto,}
     return render(request, 'asset/templates/section.html', context)
 
 
@@ -86,7 +86,8 @@ def index(request, id):
             measure = local[0]
         if request.method == 'POST' and request.POST.get('ORIGIN') == 'partner':
             measure = Points.objects.get(id = request.POST.get('THIS'))
-            measure.value_measure = request.POST.get('celula')
+            load_point = request.POST.get('celula')
+            measure.value_measure = load_point.replace(".", ",")
             measure.save()
             return redirect('index', id)
     except:
