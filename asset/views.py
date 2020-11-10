@@ -145,9 +145,7 @@ def import_csv(request):
 
                 point.label_point = aux[2]
                 point.number_point = int(aux[3])
-                point.coment = aux[4]
-                point.imagem = aux[5]
-                point.cell = aux[6]
+                point.cell = aux[4]
                 point.sectionlabel = aux[1]
                 point.projectlabel = aux[0]
                 point.save()
@@ -161,8 +159,10 @@ from django.conf import settings
 from django.http import HttpResponse, Http404
 from django_pandas.io import read_frame
 @login_required(login_url="login/")
-def export_csv(request):
-    u = Points.objects.all()
+def export_csv(request, id):
+    sec = SectionVehicle.objects.get(id = id)
+    u = Points.objects.filter(sectionlabel = sec.label_section)
+    print(u)
     celly = []
     medida_arr = [] 
     print(medida_arr) 
