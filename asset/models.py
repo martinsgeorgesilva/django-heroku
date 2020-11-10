@@ -15,9 +15,9 @@ class SectionVehicle(models.Model):
 		return '{}'.format(self.id)
 
 class Points(models.Model):
-    label_point  = models.CharField(max_length=100, null=True)
+    label_point  = models.CharField(max_length=1000, null=True)
     number_point = models.FloatField(null=True)
-    coment = models.CharField(max_length=1000, null=True)
+    coment = models.CharField(max_length=100, null=True)
     imagem = models.FileField(upload_to='documents/', null=True)
     cell = models.CharField(max_length=100, null=True)
     value_measure = models.CharField(max_length=100, null=True)
