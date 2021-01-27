@@ -136,13 +136,18 @@ def import_csv(request):
                 else:
                     proj.label_project = aux[0]
                     proj.save()
+                    sect.label_section = aux[1]
+                    sect.projectlabel = aux[0]
+                    sect.save()
 
-                if SectionVehicle.objects.filter(label_section = aux[1]):
+                '''
+                if SectionVehicle.objects.filter(Q(label_section = aux[1])):
                     print('222')
                 else:
                     sect.label_section = aux[1]
                     sect.projectlabel = aux[0]
                     sect.save()
+                '''
 
                 point.label_point = aux[2]
                 point.number_point = int(aux[3])
