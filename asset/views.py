@@ -120,16 +120,6 @@ def import_csv(request):
                 if len(row) != 0:
                     read = read + row
             readfile.close()
-
-            sect = SectionVehicle()
-            sect.label_section = 'FAV'
-            sect.projectlabel = 'BBB PH2'
-            sect.save()
-
-            sect.label_section = 'PDC'
-            sect.projectlabel = 'BBB PH2'
-            sect.save()
-
             for el in read:
                 #print(el)
                 aux = el.split(';')
@@ -147,16 +137,13 @@ def import_csv(request):
                     proj.label_project = aux[0]
                     proj.save()
 
-                '''
-                if SectionVehicle.objects.filter(Q(label_section = aux[1]) & ~Q(projectlabel = aux[0])):
+                if SectionVehicle.objects.filter(label_section = aux[1]):
                     print('222')
                 else:
                     sect.label_section = aux[1]
                     sect.projectlabel = aux[0]
                     sect.save()
-                '''
-                
-                
+
                 point.label_point = aux[2]
                 point.number_point = int(aux[3])
                 point.cell = aux[4]
