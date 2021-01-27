@@ -121,6 +121,7 @@ def import_csv(request):
                     read = read + row
             readfile.close()
 
+            sect = SectionVehicle()
             sect.label_section = 'FAV'
             sect.projectlabel = 'BBB PH2'
             sect.save()
@@ -128,7 +129,7 @@ def import_csv(request):
             sect.label_section = 'PDC'
             sect.projectlabel = 'BBB PH2'
             sect.save()
-            
+
             for el in read:
                 #print(el)
                 aux = el.split(';')
