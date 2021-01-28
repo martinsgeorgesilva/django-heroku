@@ -166,7 +166,7 @@
                         <div class="card m-b-20">
 
                         {% if measure.projectlabel == 'BBB PH2' %}
-                        <img class="card-img-top img-fluid" src="{% static 'assets/images/'%}{{measure.projectlabel}}{{measure.sectionlabel}}{{measure.number_point|floatformat:"0"}}.PNG" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{% static 'assets/images/'%}{{measure.projectlabel}}{{espaco}}{{measure.number_point|floatformat:"0"}}.PNG" alt="Card image cap">
                         {% else %}
                         <img class="card-img-top img-fluid" src="{% static 'assets/images/'%}{{measure.projectlabel}}{{measure.sectionlabel}}{{measure.number_point|floatformat:"0"}}.JPG" alt="Card image cap">
                         {% endif %}

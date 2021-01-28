@@ -65,6 +65,12 @@ def section(request, id):
 @login_required(login_url="login/")
 def index(request, id):
     sec = SectionVehicle.objects.get(id = id)
+    try:
+        espaco = sec.label_section[1:]
+        print(espaco)
+        print("ffrtrfhdtfgtjhfjfg")
+    except:
+        print('passou')
     tabela = Points.objects.filter(sectionlabel = sec.label_section).order_by('number_point')
     #APAGA DADOS DE MEDIÇÃO DE TODA A SEÇÃO DO VEÍCULO
     if request.method == 'POST' and request.POST.get('ORIGIN') == 'delet':
@@ -78,7 +84,7 @@ def index(request, id):
         measure = Points.objects.get(id = this_point)
         measure.value_measure = None
         measure.save()
-        return render(request, 'asset/templates/index.html', {'tabela':tabela, 'measure':measure, 'id':id,})
+        return render(request, 'asset/templates/index.html', {'espaco':espaco, 'tabela':tabela, 'measure':measure, 'id':id,})
 
     try:
         local = Points.objects.filter(Q(sectionlabel = sec.label_section) & Q(value_measure = None)).order_by('number_point')
@@ -93,8 +99,8 @@ def index(request, id):
     except:
         realized = True
         measure = tabela.last()
-        return render(request, 'asset/templates/index.html', {'tabela':tabela, 'id':id, 'realized':realized, 'measure':measure,})
-    return render(request, 'asset/templates/index.html', {'local':local, 'tabela':tabela, 'measure':measure, 'id':id,})
+        return render(request, 'asset/templates/index.html', {'espaco':espaco, 'tabela':tabela, 'id':id, 'realized':realized, 'measure':measure,})
+    return render(request, 'asset/templates/index.html', {'espaco':espaco, 'local':local, 'tabela':tabela, 'measure':measure, 'id':id,})
 
 
 
@@ -170,7 +176,7 @@ def export_csv(request, id):
     for el in u:
         celula = el.cell
         print(celula)
-        celula = celula.replace('J','')
+        celula = celula[1:]
         z = int(celula)
         celly.append(z)
         medida_arr.append(el.value_measure)
