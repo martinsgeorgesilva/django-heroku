@@ -34,8 +34,6 @@ class csvfile(models.Model):
 		return '{}'.format(self.file)
 
 
-
-
 class Measure(models.Model):
     Label = models.CharField(max_length=100, null=True)
     value_measure = models.FloatField(null=True)

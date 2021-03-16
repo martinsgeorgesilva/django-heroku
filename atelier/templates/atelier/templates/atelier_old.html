@@ -1,0 +1,286 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="utf-8" />
+        <title>Renault</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+       
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!--Morris Chart CSS -->
+        <link rel="stylesheet" href="{% static  'assets/plugins/morris/morris.css">
+
+        <!-- App css -->
+        <link href="{% static  'assets/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/icons.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static  'assets/css/style.css'%}" rel="stylesheet" type="text/css" />
+
+        <script src="{% static 'assets/js/modernizr.min.js'%}"></script>
+
+        <script type="text/javascript">
+
+        
+
+        </script>
+    <head>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <div class="card-box widget-user">
+                        <!-- line chart canvas element -->
+                        
+                        <!-- pie chart canvas element -->
+                        
+                        <!-- bar chart canvas element -->
+                        <canvas id="income" width="1000" height="400"></canvas>
+                    </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card-box">
+
+                            <h4 class="header-title m-t-0 m-b-30">Line Chart</h4>
+
+                            <canvas id="buyers" width="600" height="400"></canvas>
+
+                        </div>
+                    </div><!-- end col-->
+
+                    <div class="col-xl-6">
+                        <div class="card-box">
+
+                            <h4 class="header-title m-t-0 m-b-30">Bar Chart</h4>
+
+                            <canvas id="countries" width="600" height="400"></canvas>
+                        </div>
+                    </div><!-- end col-->
+
+                </div>
+                <!-- end row -->
+
+            </div>
+        </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        <div class="wrapper">
+            <div class="container-fluid">
+              <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card m-b-20 card-body">
+                            <h3 class="card-title">Configurações</h3>
+                            <p class="card-text">No início do projeto será necessário cadastrar os pontos.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card m-b-20 card-body">
+                            <h3 class="card-title">Medições</h3>
+                            <p class="card-text">Durante a convergência é feito a entrada dos dados por voz.</p>
+                            <a href="/project" class="btn btn-primary">AMBIENTE DE PROJETOS</a>
+                        </div>
+                    </div>
+                </div>
+              
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+        <script>
+            // line chart data
+            var buyerData = {
+                labels : ["January","February","March","April","May","June"],
+                datasets : [
+                {
+                    fillColor : "rgba(172,194,132,0.4)",
+                    strokeColor : "#ACC26D",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#9DB86D",
+                    data : [203,156,99,251,305,247]
+                }
+            ]
+            }
+            // get line chart canvas
+            var buyers = document.getElementById('buyers').getContext('2d');
+            // draw line chart
+            new Chart(buyers).Line(buyerData);
+            // pie chart data
+            var pieData = [
+                {
+                    value: 10,
+                    color:"#878BB6"
+                },
+                {
+                    value : 10,
+                    color : "#4ACAB4"
+                },
+                {
+                    value : 10,
+                    color : "#FF8153"
+                },
+                {
+                    value : 10,
+                    color : "#FFEA88"
+                }
+
+            ];
+            // pie chart options
+            var pieOptions = {
+                 segmentShowStroke : false,
+                 animateScale : true
+            }
+            // get pie chart canvas
+            var countries= document.getElementById("countries").getContext("2d");
+            // draw pie chart
+            new Chart(countries).Pie(pieData, pieOptions);
+            // bar chart data
+            var barData = {
+                labels : ["2020","January","February","March","April","May","June", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+                datasets : [
+                    {
+                        fillColor : "#FFD801",
+                        strokeColor : "FFD801",
+                        data : [456,479,324,569,702,600,100]
+                    },
+                    {
+                        fillColor : "#E8A317",
+                        strokeColor : "#E8A317",
+                        data : [364,504,605,400,345,320,300]
+                    }
+                ]
+            }
+            // get bar chart canvas
+            var income = document.getElementById("income").getContext("2d");
+            // draw bar chart
+            new Chart(income).Bar(barData);
+        </script>
+   
+
+            <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container-fluid">
+
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <!-- Text Logo -->
+                        <!--<a href="index.html" class="logo">-->
+                            <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                            <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
+                        <!--</a>-->
+                        <!-- Image Logo -->
+                        <a href="/" class="logo">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="35" class="logo-small">
+                            <img src="{% static 'assets/images/renault_logo.png'%}" alt="" height="50" class="logo-large">
+                        </a>
+                    </div>
+                    <!-- End Logo container-->
+
+                    <div class="menu-extras topbar-custom">
+
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                            <li class="menu-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle nav-link">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>                             
+
+                        </ul>
+                    </div>
+                    <!-- end menu-extras -->
+
+                    <div class="clearfix"></div>
+
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar-main -->
+
+            
+        </header>
+
+
+        <div class="wrapper">
+            <div class="container-fluid">
+        
+
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <h1>Importar CSV</h1>
+                        <div class="card-box widget-user">
+                            <a href="/import_csv" class="btn btn-block btn-lg btn-primary">Importar csv</a>
+                        </div>
+                    </div>
+                </div>
+
+              <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <h1>Excluir Pontos</h1>
+                        <div class="card-box widget-user">
+
+
+                                
+                        </div>
+                    </div>
+              </div>
+              
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js'%}"></script>
+        <script src="{% static 'assets/js/popper.min.js'%}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'assets/js/waves.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js'%}"></script>
+
+        <!-- KNOB JS -->
+        <!--[if IE]>
+        <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
+        <![endif]-->
+        <script src="{% static 'assets/plugins/jquery-knob/jquery.knob.js'%}"></script>
+
+        <!--Morris Chart-->
+        <script src="{% static 'assets/plugins/morris/morris.min.js'%}"></script>
+        <script src="{% static 'assets/plugins/raphael/raphael-min.js'%}"></script>
+
+        <!-- Dashboard init -->
+        <script src="{% static 'assets/pages/jquery.dashboard.js'%}"></script>
+
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/jquery.core.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.app.js'%}"></script>
+
+    </body>
+</html>

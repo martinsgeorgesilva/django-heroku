@@ -6,6 +6,7 @@ from django.conf import settings
 import os
 from django.views.static import serve as staticserve
 from asset.views import *
+from atelier.views import *
 from django.conf.urls import include, url
 
 from django.http import StreamingHttpResponse
@@ -29,6 +30,12 @@ urlpatterns = [
     path(r'project/', project, name='project'),
     path(r'section/<int:id>', section, name='section'),
     path(r'delete_measure', delete_measure, name='delete_measure'),
+
+    ########atelier_dash
+    path(r'atelier/', atelier, name='atelier'),
+    path(r'reserva/', reserva, name='reserva'),
+    path(r'finaliza/<int:id>', finaliza, name='finaliza'),
+    path(r'galeria/', galeria, name='galeria'),
     
     #url(r'^configurate/', include('conf.urls'), name='configurate'),
     #url(r'^dashboard/', include('asset.urls'), name='dashboard'),

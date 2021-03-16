@@ -77,7 +77,7 @@ File: Chartjs
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [65, 59, 80, 81, 56, 55, 40, 35, 30]
+                    data: [54, 23, 80, 81, 56, 55, 40, 35, 30]
                 }
             ]
         };
