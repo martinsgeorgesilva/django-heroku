@@ -21,7 +21,7 @@ import pandas as pd
 #import xlsxwriter
 
 def atelier(request):
-	imersion_all = Imersion.objects.filter(Q(status = 'finalizada'))
+	imersion_all = Imersion.objects.all()
 	for el in imersion_all:
             el.delete()
 	try:
