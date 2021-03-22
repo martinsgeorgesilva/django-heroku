@@ -22,11 +22,83 @@ import pandas as pd
 
 def atelier(request):
 	imersion_all = Imersion.objects.filter(Q(status = 'finalizada'))
-	for el in imersion_all:
-            el.delete()
-	ganhos_euros = 0 #125 + int(Imersion.objects.aggregate(Sum('gains_money'))['gains_money__sum'])
-	ganhos_time = 0 #210 + int(Imersion.objects.aggregate(Sum('gains_time'))['gains_time__sum'])
-	total_imersoes = 0 #25 + len(Imersion.objects.filter(Q(status = 'finalizada')))
+	try:
+		ganhos_euros = 125 + int(Imersion.objects.filter(Q(status = 'finalizada')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		ganhos_time = 210 + int(Imersion.objects.filter(Q(status = 'finalizada')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		total_imersoes = 25 + len(Imersion.objects.filter(Q(status = 'finalizada')).filter(Q(status = 'finalizada')))
+	except:
+		ganhos_euros = 0
+		ganhos_time = 0
+		total_imersoes = 0
+
+	try:
+		metier_convergencia_ganhos_euros = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Convergência')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_convergencia_ganhos_time = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Convergência')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_convergencia_total_imersoes = 0 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Convergência')).filter(Q(status = 'finalizada')))
+	except:
+		metier_convergencia_ganhos_euros = 0
+		metier_convergencia_ganhos_time = 0
+		metier_convergencia_total_imersoes = 0
+	try:
+		metier_IFM_ganhos_euros = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'IFM')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_IFM_ganhos_time = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'IFM')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_IFM_total_imersoes = 0 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'IFM')).filter(Q(status = 'finalizada')))
+	except:
+		metier_IFM_ganhos_euros = 0
+		metier_IFM_ganhos_time = 0
+		metier_IFM_total_imersoes = 0
+	try:
+		metier_carroceria_ganhos_euros = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Carroceria')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_carroceria_ganhos_time = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Carroceria')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_carroceria_total_imersoes = 0 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Carroceria')).filter(Q(status = 'finalizada')))
+	except:
+		metier_carroceria_ganhos_euros = 0
+		metier_carroceria_ganhos_time = 0
+		metier_carroceria_total_imersoes = 0
+	try:
+		metier_pintura_ganhos_euros = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Pintura')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_pintura_ganhos_time = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Pintura')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_pintura_total_imersoes = 0 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Pintura')).filter(Q(status = 'finalizada')))
+	except:
+		metier_pintura_ganhos_euros = 0
+		metier_pintura_ganhos_time = 0
+		metier_pintura_total_imersoes = 0
+	try:
+		metier_CVU_ganhos_euros = 20 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CVU')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_CVU_ganhos_time = 50 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CVU')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_CVU_total_imersoes = 4 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CVU')).filter(Q(status = 'finalizada')))
+	except:
+		metier_CVU_ganhos_euros = 20
+		metier_CVU_ganhos_time = 50
+		metier_CVU_total_imersoes = 4
+	try:
+		metier_proces_ganhos_euros = 15 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos CVP')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_proces_ganhos_time = 35 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos CVP')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_proces_total_imersoes = 3 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos CVP')).filter(Q(status = 'finalizada')))
+	except:
+		metier_proces_ganhos_euros = 15
+		metier_proces_ganhos_time = 35
+		metier_proces_total_imersoes = 3
+	try:
+		metier_meios_ganhos_euros = 25 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_meios_ganhos_time = 50 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_meios_total_imersoes = 5 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios')).filter(Q(status = 'finalizada')))
+	except:
+		metier_meios_ganhos_euros = 25
+		metier_meios_ganhos_time = 50
+		metier_meios_total_imersoes = 5
+	try:
+		metier_CMO_ganhos_euros = 65 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_CMO_ganhos_time = 75 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_CMO_total_imersoes = 13 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO')).filter(Q(status = 'finalizada')))
+	except:
+		metier_CMO_ganhos_euros = 65
+		metier_CMO_ganhos_time = 75
+		metier_CMO_total_imersoes = 13
+	
+
+
+
 
 	conta_mes = [3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	for el in imersion_all:
@@ -95,6 +167,39 @@ def atelier(request):
 	            "conta_metier_qtd5": conta_metier_qtd5,
 	            "conta_metier_qtd6": conta_metier_qtd6,
 	            "conta_metier_qtd7": conta_metier_qtd7,
+
+	            "metier_convergencia_ganhos_euros": metier_convergencia_ganhos_euros,
+	            "metier_convergencia_ganhos_time": metier_convergencia_ganhos_time,
+	            "metier_convergencia_total_imersoes": metier_convergencia_total_imersoes,
+
+	            "metier_IFM_ganhos_euros": metier_IFM_ganhos_euros,
+	            "metier_IFM_ganhos_time": metier_IFM_ganhos_time,
+	            "metier_IFM_total_imersoes": metier_IFM_total_imersoes,
+
+	            "metier_carroceria_ganhos_euros": metier_carroceria_ganhos_euros,
+	            "metier_carroceria_ganhos_time": metier_carroceria_ganhos_time,
+	            "metier_carroceria_total_imersoes": metier_carroceria_total_imersoes,
+
+	            "metier_pintura_ganhos_euros": metier_pintura_ganhos_euros,
+	            "metier_pintura_ganhos_time": metier_pintura_ganhos_time,
+	            "metier_pintura_total_imersoes": metier_pintura_total_imersoes,
+
+	            "metier_CVU_ganhos_euros": metier_CVU_ganhos_euros,
+	            "metier_CVU_ganhos_time": metier_CVU_ganhos_time,
+	            "metier_CVU_total_imersoes": metier_CVU_total_imersoes,
+
+	            "metier_proces_ganhos_euros": metier_proces_ganhos_euros,
+	            "metier_proces_ganhos_time": metier_proces_ganhos_time,
+	            "metier_proces_total_imersoes": metier_proces_total_imersoes,
+
+	            "metier_meios_ganhos_euros": metier_meios_ganhos_euros,
+	            "metier_meios_ganhos_time": metier_meios_ganhos_time,
+	            "metier_meios_total_imersoes": metier_meios_total_imersoes,
+
+	            "metier_CMO_ganhos_euros": metier_CMO_ganhos_euros,
+	            "metier_CMO_ganhos_time": metier_CMO_ganhos_time,
+	            "metier_CMO_total_imersoes": metier_CMO_total_imersoes,
+
 	          }
 	return render(request, 'atelier/templates/atelier.html', context)
 
