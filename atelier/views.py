@@ -21,9 +21,7 @@ import pandas as pd
 #import xlsxwriter
 
 def atelier(request):
-	imersion_all = Imersion.objects.all()
-	for el in imersion_all:
-            el.delete()
+	imersion_all = Imersion.objects.filter(Q(status = 'finalizada'))
 	try:
 		ganhos_euros = 125 + int(Imersion.objects.filter(Q(status = 'finalizada')).aggregate(Sum('gains_money'))['gains_money__sum'])
 		ganhos_time = 210 + int(Imersion.objects.filter(Q(status = 'finalizada')).aggregate(Sum('gains_time'))['gains_time__sum'])
