@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'django_heroku.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -92,6 +92,8 @@ DATABASES = {
 DATABASES = {
     'default': dj_database_url.config(default=f"sqlite:///{BASE_DIR}/db.sqlite3")
 }
+'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -132,7 +134,7 @@ USE_TZ = True
 LOGIN_REDIRECT_URL=('/')
 
 ###############
-
+'''
 STATIC_ROOT = BASE_DIR /'static'
 
 STATIC_URL = '/static/'
@@ -153,4 +155,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 ###############
 
-'''
+

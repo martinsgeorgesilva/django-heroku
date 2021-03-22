@@ -21,10 +21,12 @@ import pandas as pd
 #import xlsxwriter
 
 def atelier(request):
-	imersion_all = Imersion.objects.filter(Q(status = 'finalizada'))
-	ganhos_euros = 125 + int(Imersion.objects.aggregate(Sum('gains_money'))['gains_money__sum'])
-	ganhos_time = 210 + int(Imersion.objects.aggregate(Sum('gains_time'))['gains_time__sum'])
-	total_imersoes = 25 + len(Imersion.objects.filter(Q(status = 'finalizada')))
+	imersion_all = Imersion.objects.all()
+	for el in imersion_all:
+            el.delete()
+	#ganhos_euros = 125 + int(Imersion.objects.aggregate(Sum('gains_money'))['gains_money__sum'])
+	#ganhos_time = 210 + int(Imersion.objects.aggregate(Sum('gains_time'))['gains_time__sum'])
+	#total_imersoes = 25 + len(Imersion.objects.filter(Q(status = 'finalizada')))
 
 	conta_mes = [3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	for el in imersion_all:
@@ -76,9 +78,9 @@ def atelier(request):
 	conta_metier_qtd7 = int(conta_metier_qtd[7])
 	
 	
-	context = {	"ganhos_time": ganhos_time,
-	            "ganhos_euros": ganhos_euros,
-	            "total_imersoes": total_imersoes,
+	context = {	#"ganhos_time": ganhos_time,
+	            #"ganhos_euros": ganhos_euros,
+	            #"total_imersoes": total_imersoes,
 	            "taxa_total": taxa_total,
 	            "conta_metier_ganhos_money": conta_metier_ganhos_money,
 	            "conta_metier_ganhos_time": conta_metier_ganhos_time,
