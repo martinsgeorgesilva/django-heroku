@@ -27,6 +27,7 @@ urlpatterns = [
     path(r'conf', conf, name='conf'),
     path(r'import_csv', import_csv, name='import_csv'),
     path(r'export_csv/<int:id>', export_csv, name='export_csv'),
+    path(r'export_csv_atelier', export_csv_atelier, name='export_csv_atelier'),
     path(r'project/', project, name='project'),
     path(r'section/<int:id>', section, name='section'),
     path(r'delete_measure', delete_measure, name='delete_measure'),

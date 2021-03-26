@@ -22,14 +22,18 @@ import pandas as pd
 
 def atelier(request):
 	imersion_all = Imersion.objects.filter(Q(status = 'finalizada'))
+
+
+
+
 	try:
 		ganhos_euros = 125 + int(Imersion.objects.filter(Q(status = 'finalizada')).aggregate(Sum('gains_money'))['gains_money__sum'])
 		ganhos_time = 210 + int(Imersion.objects.filter(Q(status = 'finalizada')).aggregate(Sum('gains_time'))['gains_time__sum'])
 		total_imersoes = 25 + len(Imersion.objects.filter(Q(status = 'finalizada')).filter(Q(status = 'finalizada')))
 	except:
-		ganhos_euros = 0
-		ganhos_time = 0
-		total_imersoes = 0
+		ganhos_euros = 125
+		ganhos_time = 210
+		total_imersoes = 25
 
 	try:
 		metier_convergencia_ganhos_euros = 0 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Convergência')).aggregate(Sum('gains_money'))['gains_money__sum'])
@@ -64,37 +68,29 @@ def atelier(request):
 		metier_pintura_ganhos_time = 0
 		metier_pintura_total_imersoes = 0
 	try:
-		metier_CVU_ganhos_euros = 20 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CVU')).aggregate(Sum('gains_money'))['gains_money__sum'])
-		metier_CVU_ganhos_time = 50 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CVU')).aggregate(Sum('gains_time'))['gains_time__sum'])
-		metier_CVU_total_imersoes = 4 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CVU')).filter(Q(status = 'finalizada')))
+		metier_proces_ganhos_euros = 5 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_proces_ganhos_time = 30 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos')).aggregate(Sum('gains_time'))['gains_time__sum'])
+		metier_proces_total_imersoes = 1 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos')).filter(Q(status = 'finalizada')))
 	except:
-		metier_CVU_ganhos_euros = 20
-		metier_CVU_ganhos_time = 50
-		metier_CVU_total_imersoes = 4
+		metier_proces_ganhos_euros = 5
+		metier_proces_ganhos_time = 30
+		metier_proces_total_imersoes = 1
 	try:
-		metier_proces_ganhos_euros = 15 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos CVP')).aggregate(Sum('gains_money'))['gains_money__sum'])
-		metier_proces_ganhos_time = 35 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos CVP')).aggregate(Sum('gains_time'))['gains_time__sum'])
-		metier_proces_total_imersoes = 3 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos CVP')).filter(Q(status = 'finalizada')))
-	except:
-		metier_proces_ganhos_euros = 15
-		metier_proces_ganhos_time = 35
-		metier_proces_total_imersoes = 3
-	try:
-		metier_meios_ganhos_euros = 25 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_meios_ganhos_euros = 5 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios')).aggregate(Sum('gains_money'))['gains_money__sum'])
 		metier_meios_ganhos_time = 50 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios')).aggregate(Sum('gains_time'))['gains_time__sum'])
-		metier_meios_total_imersoes = 5 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios')).filter(Q(status = 'finalizada')))
+		metier_meios_total_imersoes = 1 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios')).filter(Q(status = 'finalizada')))
 	except:
-		metier_meios_ganhos_euros = 25
+		metier_meios_ganhos_euros = 5
 		metier_meios_ganhos_time = 50
-		metier_meios_total_imersoes = 5
+		metier_meios_total_imersoes = 1
 	try:
-		metier_CMO_ganhos_euros = 65 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO')).aggregate(Sum('gains_money'))['gains_money__sum'])
+		metier_CMO_ganhos_euros = 20 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO')).aggregate(Sum('gains_money'))['gains_money__sum'])
 		metier_CMO_ganhos_time = 75 + int(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO')).aggregate(Sum('gains_time'))['gains_time__sum'])
-		metier_CMO_total_imersoes = 13 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO')).filter(Q(status = 'finalizada')))
+		metier_CMO_total_imersoes = 4 + len(Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO')).filter(Q(status = 'finalizada')))
 	except:
-		metier_CMO_ganhos_euros = 65
+		metier_CMO_ganhos_euros = 20
 		metier_CMO_ganhos_time = 75
-		metier_CMO_total_imersoes = 13
+		metier_CMO_total_imersoes = 4
 	
 
 
@@ -103,6 +99,55 @@ def atelier(request):
 	conta_mes = [3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	for el in imersion_all:
 		conta_mes[int(el.date[0:2]) - 1] = conta_mes[int(el.date[0:2]) - 1] + 1
+
+
+	#######tempo atelier por mês
+
+	#convergencia
+	convergencia_anual = Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Convergência'))
+	convergencia_anual_mes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for el in convergencia_anual:
+		convergencia_anual_mes[int(el.date[0:2]) - 1] = convergencia_anual_mes[int(el.date[0:2]) - 1] + int(el.duration)
+
+	#IFM
+	ifm_anual = Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'IFM'))
+	ifm_anual_mes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for el in ifm_anual:
+		ifm_anual_mes[int(el.date[0:2]) - 1] = ifm_anual_mes[int(el.date[0:2]) - 1] + int(el.duration)
+
+	#carroceria
+	carroceria_anual = Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Carroceria'))
+	carroceria_anual_mes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for el in carroceria_anual:
+		carroceria_anual_mes[int(el.date[0:2]) - 1] = carroceria_anual_mes[int(el.date[0:2]) - 1] + int(el.duration)
+
+	#pintura
+	pintura_anual = Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Pintura'))
+	pintura_anual_mes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for el in pintura_anual:
+		pintura_anual_mes[int(el.date[0:2]) - 1] = pintura_anual_mes[int(el.date[0:2]) - 1] + int(el.duration)
+
+	#processos
+	processos_anual = Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Processos'))
+	processos_anual_mes = [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for el in processos_anual:
+		processos_anual_mes[int(el.date[0:2]) - 1] = processos_anual_mes[int(el.date[0:2]) - 1] + int(el.duration)
+
+	#meios
+	meios_anual = Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'Meios'))
+	meios_anual_mes = [0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for el in meios_anual:
+		meios_anual_mes[int(el.date[0:2]) - 1] = meios_anual_mes[int(el.date[0:2]) - 1] + int(el.duration)
+
+	#CMO
+	cmo_anual = Imersion.objects.filter(Q(status = 'finalizada') & Q(metier = 'CMO'))
+	cmo_anual_mes = [8, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for el in cmo_anual:
+		cmo_anual_mes[int(el.date[0:2]) - 1] = cmo_anual_mes[int(el.date[0:2]) - 1] + int(el.duration)
+
+    #######fim tempo metier por mês
+
+
 
 	conta_taxa = [13, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	for el in imersion_all:
@@ -115,8 +160,8 @@ def atelier(request):
 		horas_total += el
 	taxa_total = int(horas_total/((data_atual.month - 1) + (data_atual.day/30)))
 
-	metier = ['Convergência', 'IFM', 'Carroceria', 'Pintura', 'CVU','Processos (CVP)','Meios (CVP)','CMO']
-	conta_metier_qtd = [0 ,0, 0, 0, 4, 3, 5, 13]
+	metier = ['Convergência', 'IFM', 'Carroceria', 'Pintura','Processos','Meios','CMO']
+	conta_metier_qtd = [0 ,0, 0, 0, 5, 7, 13]
 	for el in imersion_all:
 		contador = 0
 		for met in metier:
@@ -124,7 +169,7 @@ def atelier(request):
 				conta_metier_qtd[contador] += 1
 			contador += 1
 
-	conta_metier_ganhos_time = [0 ,0, 0, 0, 50, 35, 50, 75]
+	conta_metier_ganhos_time = [0 ,0, 0, 0, 60, 75, 75]
 	for el in imersion_all:
 		contador = 0
 		for met in metier:
@@ -132,7 +177,7 @@ def atelier(request):
 				conta_metier_ganhos_time[contador] = conta_metier_ganhos_time[contador] + int(el.gains_time)
 			contador += 1
 
-	conta_metier_ganhos_money = [0 ,0, 0, 0, 20, 15, 25, 65]
+	conta_metier_ganhos_money = [0 ,0, 0, 0, 25, 35, 65]
 	for el in imersion_all:
 		contador = 0
 		for met in metier:
@@ -147,7 +192,7 @@ def atelier(request):
 	conta_metier_qtd4 = int(conta_metier_qtd[4])
 	conta_metier_qtd5 = int(conta_metier_qtd[5])
 	conta_metier_qtd6 = int(conta_metier_qtd[6])
-	conta_metier_qtd7 = int(conta_metier_qtd[7])
+
 	
 	
 	context = {	"ganhos_time": ganhos_time,
@@ -166,7 +211,7 @@ def atelier(request):
 	            "conta_metier_qtd4": conta_metier_qtd4,
 	            "conta_metier_qtd5": conta_metier_qtd5,
 	            "conta_metier_qtd6": conta_metier_qtd6,
-	            "conta_metier_qtd7": conta_metier_qtd7,
+	            
 
 	            "metier_convergencia_ganhos_euros": metier_convergencia_ganhos_euros,
 	            "metier_convergencia_ganhos_time": metier_convergencia_ganhos_time,
@@ -184,10 +229,6 @@ def atelier(request):
 	            "metier_pintura_ganhos_time": metier_pintura_ganhos_time,
 	            "metier_pintura_total_imersoes": metier_pintura_total_imersoes,
 
-	            "metier_CVU_ganhos_euros": metier_CVU_ganhos_euros,
-	            "metier_CVU_ganhos_time": metier_CVU_ganhos_time,
-	            "metier_CVU_total_imersoes": metier_CVU_total_imersoes,
-
 	            "metier_proces_ganhos_euros": metier_proces_ganhos_euros,
 	            "metier_proces_ganhos_time": metier_proces_ganhos_time,
 	            "metier_proces_total_imersoes": metier_proces_total_imersoes,
@@ -200,12 +241,24 @@ def atelier(request):
 	            "metier_CMO_ganhos_time": metier_CMO_ganhos_time,
 	            "metier_CMO_total_imersoes": metier_CMO_total_imersoes,
 
+
+	            "convergencia_anual_mes": convergencia_anual_mes,
+	            "ifm_anual_mes": ifm_anual_mes,
+	            "carroceria_anual_mes": carroceria_anual_mes,
+	            "pintura_anual_mes": pintura_anual_mes,
+	            "processos_anual_mes": processos_anual_mes,
+	            "meios_anual_mes": meios_anual_mes,
+	            "cmo_anual_mes": cmo_anual_mes,
+
 	          }
 	return render(request, 'atelier/templates/atelier.html', context)
 
 
 def reserva(request):
 	imersion_all = Imersion.objects.all()
+	#for el in imersion_all:
+		#el.delete()
+		#print("apagouuuuuuuuuuuuuuu")
 	if request.method == 'POST' and request.POST.get('ORIGIN') == 'reservando':
             imersion_all = Imersion()
             test = Points()
@@ -241,3 +294,22 @@ def finaliza(request, id):
 def galeria(request):
     context = {}
     return render(request, 'atelier/templates/galeria.html', context)
+
+
+import os
+from django.conf import settings
+from django.http import HttpResponse, Http404
+from django_pandas.io import read_frame
+
+
+def export_csv_atelier(request):
+    u = Imersion.objects.all()
+
+    df = read_frame(u)
+    print(df)
+    df.to_csv('exported_csv_atelier/'+'.csv', sep='\t', encoding='utf-8', header=False, index=False)
+
+    response = HttpResponse(open('exported_csv_atelier/'+'.csv', 'rb').read())
+    response['Content-Type'] = 'text/plain'
+    response['Content-Disposition'] = 'attachment; filename=exported_csv_atelier.csv'
+    return response

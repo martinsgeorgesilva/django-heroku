@@ -113,568 +113,10 @@
 
             <div class="wrapper">
             <div class="container-fluid">
-                <h4 class="page-title">Dados por Metier</h4>
+                <h4 class="page-title">Saving</h4>
                      
 
-                <div class="row">
-                    <!-- BASIC WIZARD -->
-                    <div class="col-xl-12">
-                        <div class="card-box pb-0">
-                            <form>
-                                <div id="basicwizard" class=" pull-in">
-                                    <ul class="nav nav-tabs nav-justified">
-                                        <li class="nav-item"><a href="#tab1" data-toggle="tab" class="nav-link">Todos</a></li>
-                                        <li class="nav-item"><a href="#tab2" data-toggle="tab" class="nav-link">Convergência</a></li>
-                                        <li class="nav-item"><a href="#tab3" data-toggle="tab" class="nav-link">IFM</a></li>
-                                        <li class="nav-item"><a href="#tab4" data-toggle="tab" class="nav-link">Carroceria</a></li>
-                                        <li class="nav-item"><a href="#tab5" data-toggle="tab" class="nav-link">Pintura</a></li>
-                                        <li class="nav-item"><a href="#tab6" data-toggle="tab" class="nav-link">CVU</a></li>
-                                        <li class="nav-item"><a href="#tab7" data-toggle="tab" class="nav-link">Processos(CVP)</a></li>
-                                        <li class="nav-item"><a href="#tab8" data-toggle="tab" class="nav-link">Meios(CVP)</a></li>
-                                        <li class="nav-item"><a href="#tab9" data-toggle="tab" class="nav-link">CMO</a></li>
-                                        <li class="nav-item"><a href="#tab10" data-toggle="tab" class="nav-link">2020</a></li>
-                                    </ul>
-                                    <div class="tab-content b-0 mb-0">
-                                        <div class="tab-pane m-t-10 fade" id="tab1">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab2">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_convergencia_ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_convergencia_ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_convergencia_total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab3">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_IFM_ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_IFM_ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_IFM_total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab4">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_carroceria_ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_carroceria_ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_carroceria_total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab5">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_pintura_ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_pintura_ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_pintura_total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab6">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_CVU_ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_CVU_ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_CVU_total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab7">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_proces_ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_proces_ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_proces_total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab8">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_meios_ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_meios_ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_meios_total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab9">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_CMO_ganhos_euros}}</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_CMO_ganhos_time}}h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_CMO_total_imersoes}} Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                        <div class="tab-pane m-t-10 fade" id="tab10">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">k€ 95</h1>
-                                                            <h4>Ganhos Financeiros</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">115h</h1>
-                                                            <h4>Ganhos de Tempo</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="card-box widget-user">
-                                                        <div class="text-center">
-                                                            <h1 class="text-warning" data-plugin="counterup">19 Imersões</h1>
-                                                            <h4>Quantidade de Imersões</h4>
-                                                        </div>
-                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                                 style="width: 100%;">
-                                                                <span class="sr-only">77% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
+                
 
 
 <!--
@@ -751,11 +193,512 @@
 
 
 
+                            <div class="row">
+                                <div class="col-xl-12">
+
+                                    <ul class="nav nav-tabs nav-justified">
+                                        <li class="nav-item">
+                                            <a href="#home1" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                                Acumulado
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#home2" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                Convergência
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#home3" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                IFM
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#home4" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                Carroceria
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#home5" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                Pintura
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#home6" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                Processos
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#home7" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                Meios
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#home8" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                CMO
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade show active" id="home1">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="home2">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_convergencia_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_convergencia_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_convergencia_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+
+
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="home3">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_IFM_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_IFM_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_IFM_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="home4">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_carroceria_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_carroceria_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_carroceria_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+
+                                            
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="home5">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_pintura_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_pintura_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_pintura_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="home6">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_proces_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_proces_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_proces_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="home7">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_meios_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_meios_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_meios_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="home8">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_CMO_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_CMO_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_CMO_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+                                            
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+
+
+                            </div>
+                            <!-- end row -->
+
+
 
 
 
             
-                <h4 class="page-title">Dados Gerais</h4>
+                <h4 class="page-title">Utilização do Atelier por metier em 2021</h4>
+
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card-box">
+                           <div id="containe"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h4 class="page-title">Dados gerais de utilização do Atelier</h4>
 
 
 
@@ -796,6 +739,19 @@
                 </div>
                 <!-- end row -->
 
+            
+
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card-box">
+                           <div id="containe"></div>
+                           <a href="/export_csv_atelier"><button  class="btn btn-warning btn-custom btn-bordred btn-block waves-effect waves-light">EXPORTAR DADOS EM FORMATO CSV</button></a>
+                        </div>
+                    </div>
+                </div>
+                      
+
             </div>
             </div>
 
@@ -824,6 +780,11 @@
         <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
         <![endif]-->
         <script src="{% static 'assets/plugins/jquery-knob/jquery.knob.js'%}"></script>
+
+        <!-- Form wizard -->
+        <script src="{% static 'assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js'%}"></script>
+        <script src="{% static 'assets/plugins/jquery-validation/dist/jquery.validate.min.js'%}"></script>
+
 
         
         <!-- Dashboard init -->
@@ -865,7 +826,7 @@
             },
 
             xAxis: {
-                categories: ['Convergência', 'IFM', 'Carroceria', 'Pintura', 'CVU','Processos (CVP)','Meios (CVP)','CMO'],
+                categories: ['Convergência', 'IFM', 'Carroceria', 'Pintura','Processos','Meios','CMO'],
                 title: {
                     text: 'Metier'
                 }
@@ -932,7 +893,7 @@
             },
 
             xAxis: {
-                categories: ['Convergência', 'IFM', 'Carroceria', 'Pintura', 'CVU','Processos (CVP)','Meios (CVP)','CMO'],
+                categories: ['Convergência', 'IFM', 'Carroceria', 'Pintura','Processos','Meios','CMO'],
                 title: {
                     text: 'Metier'
                 }
@@ -1043,10 +1004,9 @@ Highcharts.chart('container3', {
       { name: 'IFM', y: {{conta_metier_qtd1}} },
       { name: 'Carroceria', y: {{conta_metier_qtd2}} },
       { name: 'Pintura', y: {{conta_metier_qtd3}} },
-      { name: 'CVU', y: {{conta_metier_qtd4}} },
-      { name: 'Processos (CVP)', y: {{conta_metier_qtd5}}},
-      { name: 'Meios (CVP)', y: {{conta_metier_qtd6}} },
-      { name: 'CMO', y: {{conta_metier_qtd7}} }
+      { name: 'Processos', y: {{conta_metier_qtd4}}},
+      { name: 'Meios', y: {{conta_metier_qtd5}} },
+      { name: 'CMO', y: {{conta_metier_qtd6}} }
     ]
   }]
 });
@@ -1201,6 +1161,8 @@ Highcharts.chart('container3', {
 
                 $('#btnwizard').bootstrapWizard({'tabClass': 'nav nav-tabs navtab-wizard nav-justified','nextSelector': '.button-next', 'previousSelector': '.button-previous', 'firstSelector': '.button-first', 'lastSelector': '.button-last'});
 
+                $('.collapse').collapse()
+
                 
                 $('#rootwizard').bootstrapWizard({
                     'tabClass': 'nav nav-tabs navtab-wizard nav-justified',
@@ -1216,6 +1178,86 @@ Highcharts.chart('container3', {
 
         </script>
 
+
+        <script type="text/javascript">
+            Highcharts.chart('containe', {
+
+                  title: {
+                    text: 'Utilização do Atelier Virtual por mês em horas'
+                  },
+
+                  subtitle: {
+                    text: '2021'
+                  },
+
+                  yAxis: {
+                    title: {
+                      text: 'Tempo de utilização (h)'
+                    }
+                  },
+
+                  xAxis: {
+                    categories: ['Jan', 'Fev', 'Mar', 'Abr','Mai','Jun','Jul', 'Ago', 'Set','Out','Nov','Dez'],
+                    title: {
+                                    text: 'Período'
+                                }
+                  },
+
+                  legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                  },
+
+                  plotOptions: {
+                    series: {
+                      label: {
+                        connectorAllowed: false
+                      },
+                      pointStart: 0
+                    }
+                  },
+
+                  series: [{
+                    name: 'Convergência',
+                    data: {{convergencia_anual_mes}}
+                  }, {
+                    name: 'IFM',
+                    data: {{ifm_anual_mes}}
+                  }, {
+                    name: 'Carroceria',
+                    data: {{carroceria_anual_mes}} 
+                  }, {
+                    name: 'Pintura',
+                    data: {{pintura_anual_mes}}
+                  }, {
+                    name: 'Processos',
+                    data: {{processos_anual_mes}}
+                  }, {
+                    name: 'Meios',
+                    data: {{meios_anual_mes}}
+                  }, {
+                    name: 'CMO',
+                    data: {{cmo_anual_mes}}
+                  }],
+
+                  responsive: {
+                    rules: [{
+                      condition: {
+                        maxWidth: 500
+                      },
+                      chartOptions: {
+                        legend: {
+                          layout: 'horizontal',
+                          align: 'center',
+                          verticalAlign: 'bottom'
+                        }
+                      }
+                    }]
+                  }
+
+                });
+            </script>
 
 
 
@@ -1238,7 +1280,539 @@ Highcharts.chart('container3', {
 
 
 
+<!--
 
+
+
+                <h4 class="page-title">Saving</h4>
+                        <div class="row">
+                     
+
+                                <div class="col-xl-12 mt-md-3">
+                                    <div id="accordion">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <h6 class="m-0">
+                                                    <a href="#collapseOne" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                                                        <h4>Acumulados desde 2020</h4>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <div class="card-box widget-user">
+                                                                <div class="text-center">
+                                                                    <h1 class="text-warning" data-plugin="counterup">k€ {{ganhos_euros}}</h1>
+                                                                    <h4>Ganhos Financeiros</h4>
+                                                                </div>
+                                                                <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                                    <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                         style="width: 100%;">
+                                                                        <span class="sr-only">77% Complete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <div class="card-box widget-user">
+                                                                <div class="text-center">
+                                                                    <h1 class="text-warning" data-plugin="counterup">{{ganhos_time}}h</h1>
+                                                                    <h4>Ganhos de Tempo</h4>
+                                                                </div>
+                                                                <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                                    <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                         style="width: 100%;">
+                                                                        <span class="sr-only">77% Complete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <div class="card-box widget-user">
+                                                                <div class="text-center">
+                                                                    <h1 class="text-warning" data-plugin="counterup">{{total_imersoes}} Imersões</h1>
+                                                                    <h4>Quantidade de Imersões</h4>
+                                                                </div>
+                                                                <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                                    <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                         style="width: 100%;">
+                                                                        <span class="sr-only">77% Complete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingTwo">
+                                                <h6 class="m-0">
+                                                    <a href="#collapseTwo" class="collapsed text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
+                                                        <h4>Convergência</h4>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_convergencia_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_convergencia_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_convergencia_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingThree">
+                                                <h6 class="m-0">
+                                                    <a href="#collapseThree" class="collapsed text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+                                                        <h4>IFM</h4>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_IFM_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_IFM_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_IFM_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingFour">
+                                                <h6 class="m-0">
+                                                    <a href="#collapseFour" class="collapsed text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
+                                                        <h4>Carroceria</h4>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_carroceria_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_carroceria_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_carroceria_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                           
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingFive">
+                                                <h6 class="m-0">
+                                                    <a href="#collapseFive" class="collapsed text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFive">
+                                                        <h4>Pintura</h4>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_pintura_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_pintura_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_pintura_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingSix">
+                                                <h6 class="m-0">
+                                                    <a href="#collapseSix" class="collapsed text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="collapseSix">
+                                                        <h4>Processos</h4>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_proces_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_proces_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_proces_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                          
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingSeven">
+                                                <h6 class="m-0">
+                                                    <a href="#collapseSeven" class="collapsed text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="collapseSeven">
+                                                        <h4>Meios</h4>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_meios_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_meios_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_meios_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                         
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="headingEight">
+                                                <h6 class="m-0">
+                                                    <a href="#collapseEight" class="collapsed text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="collapseEight">
+                                                        <h4>CMO</h4>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">k€ {{metier_CMO_ganhos_euros}}</h1>
+                                                            <h4>Ganhos Financeiros</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_CMO_ganhos_time}}h</h1>
+                                                            <h4>Ganhos de Tempo</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="card-box widget-user">
+                                                        <div class="text-center">
+                                                            <h1 class="text-warning" data-plugin="counterup">{{metier_CMO_total_imersoes}} Imersões</h1>
+                                                            <h4>Quantidade de Imersões</h4>
+                                                        </div>
+                                                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: 100%;">
+                                                                <span class="sr-only">77% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                          
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+-->
+                        
 
 
 
