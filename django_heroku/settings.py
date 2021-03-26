@@ -79,6 +79,7 @@ WSGI_APPLICATION = 'django_heroku.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+'''
 
 
 DATABASES = {
@@ -92,7 +93,7 @@ DATABASES = {
 DATABASES = {
     'default': dj_database_url.config(default=f"sqlite:///{BASE_DIR}/db.sqlite3")
 }
-'''
+
 
 
 # Password validation
