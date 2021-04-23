@@ -36,7 +36,9 @@ urlpatterns = [
     path(r'atelier/', atelier, name='atelier'),
     path(r'reserva/', reserva, name='reserva'),
     path(r'finaliza/<int:id>', finaliza, name='finaliza'),
+    path(r'finaliza_dojo/<int:id>', finaliza_dojo, name='finaliza_dojo'),
     path(r'galeria/', galeria, name='galeria'),
+    path(r'dojo/', dojo, name='dojo'),
     
     #url(r'^configurate/', include('conf.urls'), name='configurate'),
     #url(r'^dashboard/', include('asset.urls'), name='dashboard'),

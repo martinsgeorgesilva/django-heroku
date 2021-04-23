@@ -296,6 +296,91 @@ def galeria(request):
     return render(request, 'atelier/templates/galeria.html', context)
 
 
+
+
+def dojo(request):
+	reserva_dojo = Dojo_imersion.objects.all()
+	#for el in reserva_dojo:
+		#el.delete()
+		#print("apagouuuuuuuuuuuuuuu")
+	if request.method == 'POST' and request.POST.get('ORIGIN') == 'reservando_dojo':
+		reserva_dojo = Dojo_imersion()
+		reserva_dojo.usuario = request.POST.get('Usuário')
+		print(reserva_dojo.usuario)
+		reserva_dojo.UET = request.POST.get('UET')
+		reserva_dojo.time_initial = request.POST.get('time_initial')
+		reserva_dojo.date = request.POST.get('date')
+		reserva_dojo.module = request.POST.get('Módulo')
+		reserva_dojo.status = "reservada"
+		reserva_dojo.description = "Ainda não há descrição"
+		reserva_dojo.save()
+		print('passou aquiiiiiiiiiiiiiiiiiiiiiiiii')
+		return redirect('dojo')
+	context = {"reserva_dojo":reserva_dojo}
+	return render(request, 'atelier/templates/dojo.html', context)
+
+
+def finaliza_dojo(request, id):
+	finaliza_dojo = Dojo_imersion.objects.get(id = id)
+	if request.method == 'POST' and request.POST.get('ORIGIN') == 'finalizando':
+		finaliza_dojo.status = "finalizada"
+		finaliza_dojo.description = request.POST.get('description')
+		finaliza_dojo.nota = "9.0"
+		try:
+		    finaliza_dojo.gabarito1 = request.POST.get('radio1')[7]
+		except:
+			finaliza_dojo.gabarito1 = "None"
+		try:
+			finaliza_dojo.gabarito2 = request.POST.get('radio2')[7]
+		except:
+			finaliza_dojo.gabarito2 = "None"
+		try:
+			finaliza_dojo.gabarito3 = request.POST.get('radio3')[7]
+		except:
+			finaliza_dojo.gabarito3 = "None"
+		try:
+			finaliza_dojo.gabarito4 = request.POST.get('radio4')[7]
+		except:
+			finaliza_dojo.gabarito4 = "None"
+		try:
+			finaliza_dojo.gabarito5 = request.POST.get('radio5')[7]
+		except:
+			finaliza_dojo.gabarito5 = "None"
+		try:
+		    finaliza_dojo.gabarito6 = request.POST.get('radio6')[7]
+		except:
+			finaliza_dojo.gabarito6 = "None"
+		try:
+			finaliza_dojo.gabarito7 = request.POST.get('radio7')[7]
+		except:
+			finaliza_dojo.gabarito7 = "None"
+		try:
+			finaliza_dojo.gabarito8 = request.POST.get('radio8')[7]
+		except:
+			finaliza_dojo.gabarito8 = "None"
+		try:
+			finaliza_dojo.gabarito9 = request.POST.get('radio9')[7]
+		except:
+			finaliza_dojo.gabarito9 = "None"
+		try:
+			finaliza_dojo.gabarito0 = request.POST.get('radio0')[7]
+		except:
+			finaliza_dojo.gabarito0 = "None"
+		finaliza_dojo.save()
+	context = {"id": id, "finaliza_dojo": finaliza_dojo,
+			   "gabarito1": finaliza_dojo.gabarito1,
+			   "gabarito2": finaliza_dojo.gabarito2,
+			   "gabarito3": finaliza_dojo.gabarito3,
+			   "gabarito4": finaliza_dojo.gabarito4,
+			   "gabarito5": finaliza_dojo.gabarito5,
+			   "gabarito6": finaliza_dojo.gabarito6,
+			   "gabarito7": finaliza_dojo.gabarito7,
+			   "gabarito8": finaliza_dojo.gabarito8,
+			   "gabarito9": finaliza_dojo.gabarito9,
+			   "gabarito0": finaliza_dojo.gabarito0}
+	return render(request, 'atelier/templates/finaliza_dojo.html', context)
+
+
 import os
 from django.conf import settings
 from django.http import HttpResponse, Http404
